@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Number Theory Scrapbook</title>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters:[
+        {left:'$$',right:'$$',display:true},
+        {left:'$',right:'$',display:false},
+        {left:'\\(',right:'\\)',display:false},
+        {left:'\\[',right:'\\]',display:true}
+      ],
+      throwOnError:false
+    });"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================ NAV -->
+<nav id="main-nav">
+  <a class="nav-brand" onclick="showScreen('home')">
+    ℕ <span>/</span> The Number Theory Scrapbook
+  </a>
+  <ul class="nav-links">
+    <li><a onclick="showScreen('home')"       id="nav-home">Home</a></li>
+    <li><a onclick="showScreen('learn')"      id="nav-learn">Learn</a></li>
+    <li><a onclick="showScreen('glossary')"   id="nav-glossary">Glossary</a></li>
+    <li><a onclick="showScreen('mysteries')"  id="nav-mysteries">Mysteries</a></li>
+    <li><a onclick="showScreen('more')"       id="nav-more">More</a></li>
+    <li><a onclick="showScreen('references')" id="nav-references">References</a></li>
+    <li><a onclick="showScreen('about')"      id="nav-about">About</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================ HOME -->
+<section class="screen active" id="home">
+  <!-- Math symbols background -->
+  <div class="math-bg" aria-hidden="true">
+    ∀ ∃ ∈ ∉ ⊂ ⊃ ∩ ∪ ≡ ≢ ≤ ≥ ∣ ∤ φ λ π ζ μ σ τ ω Σ Π Δ ∇ ∞ ℕ ℤ ℚ ℝ ℂ ℙ ⌊ ⌋ ⌈ ⌉ gcd lcm mod ord φ(n)
+    p² + q² aⁿ + bⁿ = cⁿ ζ(s) = Σ 1/nˢ φ(n) = n∏(1−1/p) a ≡ b (mod n)
+    ∀ ∃ ∈ ∉ ⊂ ⊃ ∩ ∪ ≡ ≢ ≤ ≥ ∣ ∤ φ λ π ζ μ σ τ ω Σ Π Δ ∇ ∞ ℕ ℤ ℚ ℝ ℂ ℙ ⌊ ⌋ ⌈ ⌉ gcd lcm mod ord
+    p² + q² aⁿ + bⁿ = cⁿ ζ(s) = Σ 1/nˢ φ(n) = n∏(1−1/p) a ≡ b (mod n) p ∈ ℙ n! + 1
+    ∀ ∃ ∈ ∉ ⊂ ⊃ ∩ ∪ ≡ ≢ ≤ ≥ ∣ ∤ φ λ π ζ μ σ τ ω Σ Π Δ ∇ ∞ ℕ ℤ ℚ ℝ ℂ ℙ ⌊ ⌋ ⌈ ⌉
+    aⁿ + bⁿ = cⁿ ζ(s) = Σ 1/nˢ φ(n) = n∏(1−1/p) a ≡ b (mod n) p ∈ ℙ n! + 1 π(x) ~ x/ln(x)
+    ∀ ∃ ∈ ∉ ⊂ ⊃ ∩ ∪ ≡ ≢ ≤ ≥ ∣ ∤ φ λ π ζ μ σ τ ω Σ Π Δ ∇ ∞ ℕ ℤ ℚ ℝ ℂ ℙ ⌊ ⌋ ⌈ ⌉ gcd lcm
+    p² + q² aⁿ + bⁿ = cⁿ ζ(s) = Σ 1/nˢ φ(n) = n∏(1−1/p) a ≡ b (mod n) p ∈ ℙ n! + 1
+  </div>
+
+  <div class="home-content">
+    <p class="home-eyebrow">An Encyclopaedic Journey through</p>
+    <h1 class="home-title">The Number Theory<br><em>Scrapbook</em></h1>
+    <p class="home-subtitle">From the integers to infinity — and everything in between.</p>
+
+    <!-- CTA buttons -->
+    <div class="home-cta">
+      <button class="btn btn-primary" onclick="showScreen('learn')">⬧ Begin Learning</button>
+      <button class="btn btn-outline" onclick="showScreen('glossary')">Glossary of Terms</button>
+      <button class="btn btn-ghost" onclick="showScreen('mysteries')">Unsolved Mysteries</button>
+      <button class="btn btn-ghost" onclick="showScreen('more')">Research Paper</button>
+    </div>
+
+    <!-- Founding Fathers -->
+    <div style="margin-top:3.5rem">
+      <p class="unit-label" style="color:var(--sepia-light);font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;">
+        The Founding Fathers
+        <span style="flex:1;height:1px;background:rgba(201,168,76,0.25);display:block;"></span>
+      </p>
+      <div class="portraits-row">
+
+        <div class="portrait-card">
+          <div class="portrait-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Carl_Friedrich_Gauss.jpg/800px-Carl_Friedrich_Gauss.jpg"
+                 alt="Carl Friedrich Gauss"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--sepia-light);">𝔾</div>
+          </div>
+          <div class="portrait-name">Carl Friedrich Gauss</div>
+          <div class="portrait-years">1777 – 1855</div>
+        </div>
+
+        <div class="portrait-card">
+          <div class="portrait-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Pierre_de_Fermat.jpg/800px-Pierre_de_Fermat.jpg"
+                 alt="Pierre de Fermat"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--sepia-light);">ℱ</div>
+          </div>
+          <div class="portrait-name">Pierre de Fermat</div>
+          <div class="portrait-years">1601 – 1665</div>
+        </div>
+
+        <div class="portrait-card">
+          <div class="portrait-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Leonhard_Euler.jpg/800px-Leonhard_Euler.jpg"
+                 alt="Leonhard Euler"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--sepia-light);">ℰ</div>
+          </div>
+          <div class="portrait-name">Leonhard Euler</div>
+          <div class="portrait-years">1707 – 1783</div>
+        </div>
+
+        <div class="portrait-card">
+          <div class="portrait-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Georg_Friedrich_Bernhard_Riemann.jpeg/800px-Georg_Friedrich_Bernhard_Riemann.jpeg"
+                 alt="Bernhard Riemann"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--sepia-light);">ℛ</div>
+          </div>
+          <div class="portrait-name">Bernhard Riemann</div>
+          <div class="portrait-years">1826 – 1866</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="home-overview">
+      <div class="overview-block">
+        <h2>What is Number Theory?</h2>
+        <div class="content-placeholder">[ Your overview content goes here ]</div>
+      </div>
+      <div class="overview-block">
+        <h2>Why Does It Matter?</h2>
+        <div class="content-placeholder">[ Your content on impact &amp; applications goes here ]</div>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,0.2)">
+      <div class="home-overview">
+        <div class="overview-block">
+          <h2>A History of the Field</h2>
+          <div class="content-placeholder">[ Your historical timeline / narrative goes here ]</div>
+        </div>
+        <div class="overview-block">
+          <h2>The Future of Number Theory</h2>
+          <div class="content-placeholder">[ Your forward-looking content goes here ]</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>The Number Theory Scrapbook</span> — All content authored by the site creator.
+  </footer>
+</section>
+
+<!-- ============================================================ LEARN -->
+<section class="screen" id="learn">
+  <div class="page-wrap">
+    <div class="page-header">
+      <p class="page-eyebrow">Curriculum</p>
+      <h1 class="page-title">Begin <em>Learning</em></h1>
+      <p class="page-desc">Select a topic below to explore its theory, visualizations, practice problems, and real-world applications.</p>
+    </div>
+
+    <p class="syllabus-intro">
+      [ Add a brief introductory paragraph here about the structure of this course / what the student will learn. ]
+    </p>
+
+    <!-- UNIT 1 -->
+    <div class="topic-unit">
+      <div class="unit-label">Unit I — Foundations</div>
+      <div class="topic-grid" id="unit1-grid">
+
+        <div class="topic-card" onclick="openTopic('divisibility')">
+          <div class="topic-num">1.1</div>
+          <div class="topic-name">Divisibility &amp; the Division Algorithm</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('gcd')">
+          <div class="topic-num">1.2</div>
+          <div class="topic-name">Greatest Common Divisor</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('euclidean')">
+          <div class="topic-num">1.3</div>
+          <div class="topic-name">The Euclidean Algorithm</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('primes')">
+          <div class="topic-num">1.4</div>
+          <div class="topic-name">Prime Numbers &amp; Unique Factorization</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- UNIT 2 -->
+    <div class="topic-unit">
+      <div class="unit-label">Unit II — Congruences &amp; Modular Arithmetic</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" onclick="openTopic('congruences')">
+          <div class="topic-num">2.1</div>
+          <div class="topic-name">Congruences</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('linear-congruences')">
+          <div class="topic-num">2.2</div>
+          <div class="topic-name">Linear Congruences</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('crt')">
+          <div class="topic-num">2.3</div>
+          <div class="topic-name">The Chinese Remainder Theorem</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('euler-fermat')">
+          <div class="topic-num">2.4</div>
+          <div class="topic-name">Euler's &amp; Fermat's Theorems</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- UNIT 3 -->
+    <div class="topic-unit">
+      <div class="unit-label">Unit III — Arithmetic Functions</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" onclick="openTopic('phi')">
+          <div class="topic-num">3.1</div>
+          <div class="topic-name">Euler's Totient Function φ(n)</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('mobius')">
+          <div class="topic-num">3.2</div>
+          <div class="topic-name">The Möbius Function &amp; Inversion</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('dirichlet')">
+          <div class="topic-num">3.3</div>
+          <div class="topic-name">Dirichlet Series &amp; Convolution</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- UNIT 4 -->
+    <div class="topic-unit">
+      <div class="unit-label">Unit IV — Quadratic Residues &amp; Reciprocity</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" onclick="openTopic('quad-res')">
+          <div class="topic-num">4.1</div>
+          <div class="topic-name">Quadratic Residues</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('legendre')">
+          <div class="topic-num">4.2</div>
+          <div class="topic-name">The Legendre Symbol</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('quadratic-reciprocity')">
+          <div class="topic-num">4.3</div>
+          <div class="topic-name">The Law of Quadratic Reciprocity</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- UNIT 5 -->
+    <div class="topic-unit">
+      <div class="unit-label">Unit V — Analytic &amp; Advanced Topics</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" onclick="openTopic('prime-theorem')">
+          <div class="topic-num">5.1</div>
+          <div class="topic-name">The Prime Number Theorem</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('riemann')">
+          <div class="topic-num">5.2</div>
+          <div class="topic-name">The Riemann Zeta Function</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('diophantine')">
+          <div class="topic-num">5.3</div>
+          <div class="topic-name">Diophantine Equations</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+        <div class="topic-card" onclick="openTopic('cryptography')">
+          <div class="topic-num">5.4</div>
+          <div class="topic-name">Number Theory in Cryptography</div>
+          <div class="topic-teaser">[ Add a one-sentence teaser for this topic. ]</div>
+          <span class="topic-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <footer>
+    <span>The Number Theory Scrapbook</span> — All content authored by the site creator.
+  </footer>
+</section>
+
+<!-- ============================================================ TOPIC DETAIL -->
+<section class="screen" id="topic-detail">
+  <div class="topic-detail-header">
+    <div style="max-width:1200px;margin:0 auto;padding:0 2.5rem;">
+      <div class="back-btn" onclick="showScreen('learn')">← Back to Syllabus</div>
+      <p class="home-eyebrow" id="td-unit">Unit</p>
+      <h1 id="td-title">Topic Title</h1>
+      <p class="discoverer" id="td-discoverer">Discovered / Developed by: —</p>
+    </div>
+  </div>
+
+  <div class="quadrant-grid">
+    <!-- Q1: Theory -->
+    <div class="quadrant">
+      <div class="quadrant-label">
+        <span class="quadrant-icon">I</span> The Theory
+      </div>
+      <h2>Formal Mathematics</h2>
+      <div id="td-theory">
+        <div class="content-placeholder">[ LaTeX / KaTeX explanation goes here ]</div>
+      </div>
+    </div>
+
+    <!-- Q2: Visualization -->
+    <div class="quadrant">
+      <div class="quadrant-label">
+        <span class="quadrant-icon">II</span> The Visualization
+      </div>
+      <h2>Diagrams &amp; Charts</h2>
+      <div id="td-viz">
+        <div class="viz-area">[ Diagram / chart / interactive visualization goes here ]</div>
+      </div>
+    </div>
+
+    <!-- Q3: Practice -->
+    <div class="quadrant">
+      <div class="quadrant-label">
+        <span class="quadrant-icon">III</span> The Practice
+      </div>
+      <h2>Example Problems</h2>
+      <div id="td-practice">
+        <div class="problem-block">
+          <div class="problem-q">Problem 1: [ Add problem statement here ]</div>
+          <div class="problem-s"><em>Solution:</em> [ Add solution here ]</div>
+        </div>
+        <div class="problem-block">
+          <div class="problem-q">Problem 2: [ Add problem statement here ]</div>
+          <div class="problem-s"><em>Solution:</em> [ Add solution here ]</div>
+        </div>
+        <div class="problem-block">
+          <div class="problem-q">Problem 3: [ Add problem statement here ]</div>
+          <div class="problem-s"><em>Solution:</em> [ Add solution here ]</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: Application -->
+    <div class="quadrant">
+      <div class="quadrant-label">
+        <span class="quadrant-icon">IV</span> The Application
+      </div>
+      <h2>Real-World Relevance</h2>
+      <div id="td-application">
+        <div class="content-placeholder">[ Applications, industry uses, and importance go here ]</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1200px;margin:2rem auto;padding:0 2.5rem;text-align:center;">
+    <button class="btn btn-outline" onclick="showScreen('learn')" style="color:var(--crimson);border-color:var(--crimson);">
+      ← Return to Syllabus
+    </button>
+  </div>
+
+  <footer>
+    <span>The Number Theory Scrapbook</span> — All content authored by the site creator.
+  </footer>
+</section>
+
+<!-- ============================================================ GLOSSARY -->
+<section class="screen" id="glossary">
+  <div class="page-wrap">
+    <div class="page-header">
+      <p class="page-eyebrow">Reference</p>
+      <h1 class="page-title">Glossary of <em>Terms</em></h1>
+      <p class="page-desc">Core vocabulary and definitions from Number Theory, organized for quick reference.</p>
+    </div>
+
+    <div class="glossary-search-bar">
+      <input type="text" id="glossary-search" placeholder="Search a term… (e.g., prime, congruence, Euler…)" oninput="filterGlossary()" />
+    </div>
+
+    <div class="glossary-category-tabs">
+      <button class="cat-tab active" onclick="filterByCategory('all', this)">All</button>
+      <button class="cat-tab" onclick="filterByCategory('foundations', this)">Foundations</button>
+      <button class="cat-tab" onclick="filterByCategory('congruences', this)">Congruences</button>
+      <button class="cat-tab" onclick="filterByCategory('functions', this)">Arith. Functions</button>
+      <button class="cat-tab" onclick="filterByCategory('primes', this)">Primes</button>
+      <button class="cat-tab" onclick="filterByCategory('advanced', this)">Advanced</button>
+    </div>
+
+    <div class="glossary-grid" id="glossary-grid">
+
+      <!-- TERM CARDS — add your definitions to each .glossary-def and .glossary-latex -->
+
+      <div class="glossary-card" data-category="foundations">
+        <div class="glossary-term">Divisibility</div>
+        <div class="glossary-category-badge">Foundations</div>
+        <div class="glossary-def">[ Your definition of divisibility goes here. ]</div>
+        <div class="glossary-latex">$a \mid b$</div>
+      </div>
+
+      <div class="glossary-card" data-category="foundations">
+        <div class="glossary-term">Integer</div>
+        <div class="glossary-category-badge">Foundations</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$\mathbb{Z} = \{\ldots, -2, -1, 0, 1, 2, \ldots\}$</div>
+      </div>
+
+      <div class="glossary-card" data-category="foundations">
+        <div class="glossary-term">Greatest Common Divisor</div>
+        <div class="glossary-category-badge">Foundations</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$\gcd(a, b)$</div>
+      </div>
+
+      <div class="glossary-card" data-category="foundations">
+        <div class="glossary-term">Least Common Multiple</div>
+        <div class="glossary-category-badge">Foundations</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$\text{lcm}(a, b)$</div>
+      </div>
+
+      <div class="glossary-card" data-category="primes">
+        <div class="glossary-term">Prime Number</div>
+        <div class="glossary-category-badge">Primes</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$p > 1,\; p \in \mathbb{P}$</div>
+      </div>
+
+      <div class="glossary-card" data-category="primes">
+        <div class="glossary-term">Composite Number</div>
+        <div class="glossary-category-badge">Primes</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$n = ab,\; a,b > 1$</div>
+      </div>
+
+      <div class="glossary-card" data-category="congruences">
+        <div class="glossary-term">Congruence</div>
+        <div class="glossary-category-badge">Congruences</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$a \equiv b \pmod{n}$</div>
+      </div>
+
+      <div class="glossary-card" data-category="congruences">
+        <div class="glossary-term">Residue Class</div>
+        <div class="glossary-category-badge">Congruences</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$[a]_n = \{a + kn : k \in \mathbb{Z}\}$</div>
+      </div>
+
+      <div class="glossary-card" data-category="congruences">
+        <div class="glossary-term">Modular Inverse</div>
+        <div class="glossary-category-badge">Congruences</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$a \cdot a^{-1} \equiv 1 \pmod{n}$</div>
+      </div>
+
+      <div class="glossary-card" data-category="functions">
+        <div class="glossary-term">Euler's Totient Function</div>
+        <div class="glossary-category-badge">Arith. Functions</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$\varphi(n) = n\prod_{p \mid n}\!\left(1 - \tfrac{1}{p}\right)$</div>
+      </div>
+
+      <div class="glossary-card" data-category="functions">
+        <div class="glossary-term">Möbius Function</div>
+        <div class="glossary-category-badge">Arith. Functions</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$\mu(n) \in \{-1, 0, 1\}$</div>
+      </div>
+
+      <div class="glossary-card" data-category="functions">
+        <div class="glossary-term">Multiplicative Function</div>
+        <div class="glossary-category-badge">Arith. Functions</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$f(mn) = f(m)f(n),\; \gcd(m,n)=1$</div>
+      </div>
+
+      <div class="glossary-card" data-category="advanced">
+        <div class="glossary-term">Quadratic Residue</div>
+        <div class="glossary-category-badge">Advanced</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$x^2 \equiv a \pmod{p}$ has a solution</div>
+      </div>
+
+      <div class="glossary-card" data-category="advanced">
+        <div class="glossary-term">Legendre Symbol</div>
+        <div class="glossary-category-badge">Advanced</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$\left(\dfrac{a}{p}\right) \in \{-1, 0, 1\}$</div>
+      </div>
+
+      <div class="glossary-card" data-category="advanced">
+        <div class="glossary-term">Dirichlet Series</div>
+        <div class="glossary-category-badge">Advanced</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$\displaystyle\sum_{n=1}^{\infty} \frac{a_n}{n^s}$</div>
+      </div>
+
+      <div class="glossary-card" data-category="advanced">
+        <div class="glossary-term">Riemann Zeta Function</div>
+        <div class="glossary-category-badge">Advanced</div>
+        <div class="glossary-def">[ Your definition goes here. ]</div>
+        <div class="glossary-latex">$\zeta(s) = \displaystyle\sum_{n=1}^{\infty} \frac{1}{n^s}$</div>
+      </div>
+
+    </div><!-- end glossary-grid -->
+  </div>
+  <footer>
+    <span>The Number Theory Scrapbook</span> — All content authored by the site creator.
+  </footer>
+</section>
+
+<!-- ============================================================ MYSTERIES -->
+<section class="screen" id="mysteries">
+  <div class="page-wrap">
+    <div class="page-header">
+      <p class="page-eyebrow">The Unsolved</p>
+      <h1 class="page-title">Unsolved Mysteries <em>Gallery</em></h1>
+      <p class="page-desc">Famous open conjectures — framed like exhibits in a museum of the unknown.</p>
+    </div>
+
+    <p class="gallery-intro">
+      [ Add your introductory paragraph about unsolved problems in number theory here. Set the tone — why do these mysteries captivate mathematicians? What does it mean for a problem to remain open for centuries? ]
+    </p>
+
+    <div class="mystery-grid">
+
+      <!-- Each .mystery-frame is one "framed exhibit" -->
+
+      <div class="mystery-frame">
+        <div class="mystery-plaque">
+          <span>Exhibit 01</span>
+          <span class="mystery-status">UNSOLVED</span>
+        </div>
+        <div class="mystery-canvas">
+          <div class="big-formula">2+2=4? 4=p+q?</div>
+          <span style="font-size:1.8rem;opacity:0.35">?</span>
+        </div>
+        <div class="mystery-caption">
+          <div class="mystery-name">[ Conjecture Name ]</div>
+          <div class="mystery-year">Proposed: [ Year ]</div>
+          <div class="mystery-desc">[ Add your description of this unsolved conjecture here. ]</div>
+        </div>
+      </div>
+
+      <div class="mystery-frame">
+        <div class="mystery-plaque">
+          <span>Exhibit 02</span>
+          <span class="mystery-status">UNSOLVED</span>
+        </div>
+        <div class="mystery-canvas">
+          <div class="big-formula">ζ(1/2+it)=0?</div>
+          <span style="font-size:1.8rem;opacity:0.35">ζ</span>
+        </div>
+        <div class="mystery-caption">
+          <div class="mystery-name">[ Conjecture Name ]</div>
+          <div class="mystery-year">Proposed: [ Year ]</div>
+          <div class="mystery-desc">[ Add your description of this unsolved conjecture here. ]</div>
+        </div>
+      </div>
+
+      <div class="mystery-frame">
+        <div class="mystery-plaque">
+          <span>Exhibit 03</span>
+          <span class="mystery-status">UNSOLVED</span>
+        </div>
+        <div class="mystery-canvas">
+          <div class="big-formula">p, p+2 ∈ ℙ</div>
+          <span style="font-size:1.8rem;opacity:0.35">∞</span>
+        </div>
+        <div class="mystery-caption">
+          <div class="mystery-name">[ Conjecture Name ]</div>
+          <div class="mystery-year">Proposed: [ Year ]</div>
+          <div class="mystery-desc">[ Add your description of this unsolved conjecture here. ]</div>
+        </div>
+      </div>
+
+      <div class="mystery-frame">
+        <div class="mystery-plaque">
+          <span>Exhibit 04</span>
+          <span class="mystery-status">UNSOLVED</span>
+        </div>
+        <div class="mystery-canvas">
+          <div class="big-formula">L(1, χ) ≠ 0</div>
+          <span style="font-size:1.8rem;opacity:0.35">L</span>
+        </div>
+        <div class="mystery-caption">
+          <div class="mystery-name">[ Conjecture Name ]</div>
+          <div class="mystery-year">Proposed: [ Year ]</div>
+          <div class="mystery-desc">[ Add your description of this unsolved conjecture here. ]</div>
+        </div>
+      </div>
+
+      <div class="mystery-frame">
+        <div class="mystery-plaque">
+          <span>Exhibit 05</span>
+          <span class="mystery-status">UNSOLVED</span>
+        </div>
+        <div class="mystery-canvas">
+          <div class="big-formula">n → n/2 or 3n+1</div>
+          <span style="font-size:1.8rem;opacity:0.35">1</span>
+        </div>
+        <div class="mystery-caption">
+          <div class="mystery-name">[ Conjecture Name ]</div>
+          <div class="mystery-year">Proposed: [ Year ]</div>
+          <div class="mystery-desc">[ Add your description of this unsolved conjecture here. ]</div>
+        </div>
+      </div>
+
+      <div class="mystery-frame">
+        <div class="mystery-plaque">
+          <span>Exhibit 06</span>
+          <span class="mystery-status partial">PARTIAL</span>
+        </div>
+        <div class="mystery-canvas">
+          <div class="big-formula">p ~ x/ln(x)</div>
+          <span style="font-size:1.8rem;opacity:0.35">π</span>
+        </div>
+        <div class="mystery-caption">
+          <div class="mystery-name">[ Conjecture Name ]</div>
+          <div class="mystery-year">Proposed: [ Year ]</div>
+          <div class="mystery-desc">[ Add your description of this partially-solved problem here. ]</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <span>The Number Theory Scrapbook</span> — All content authored by the site creator.
+  </footer>
+</section>
+
+<!-- ============================================================ MORE -->
+<section class="screen" id="more">
+  <div class="page-wrap">
+    <div class="page-header">
+      <p class="page-eyebrow">Research</p>
+      <h1 class="page-title">The Research <em>Paper</em></h1>
+      <p class="page-desc">A formal research paper written by the site creator. Scroll through the document below.</p>
+    </div>
+
+    <div class="paper-wrap">
+      <!-- Replace 'paper.pdf' with the actual path to your PDF once it's in the project folder -->
+      <div class="pdf-viewer-area" id="pdf-viewer-area">
+        <div class="pdf-placeholder">
+          <div class="icon">📄</div>
+          <p>Research paper will appear here.</p>
+          <small>PLACE YOUR PDF FILE IN THIS PROJECT FOLDER AND UPDATE THE SRC BELOW</small>
+        </div>
+      </div>
+      <!-- Uncomment and update this once your PDF is ready:
+      <div class="pdf-viewer-area">
+        <iframe src="paper.pdf" type="application/pdf" title="Research Paper"></iframe>
+      </div>
+      -->
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;">
+        <a href="paper.pdf" download class="btn btn-primary" style="font-size:0.9rem;">⬇ Download PDF</a>
+        <a href="paper.pdf" target="_blank" class="btn btn-outline" style="font-size:0.9rem;">Open in New Tab ↗</a>
+      </div>
+    </div>
+
+  </div>
+  <footer>
+    <span>The Number Theory Scrapbook</span> — All content authored by the site creator.
+  </footer>
+</section>
+
+<!-- ============================================================ REFERENCES -->
+<section class="screen" id="references">
+  <div class="page-wrap">
+    <div class="page-header">
+      <p class="page-eyebrow">Bibliography</p>
+      <h1 class="page-title">References &amp; <em>Resources</em></h1>
+      <p class="page-desc">All sources, textbooks, and supplementary materials used to build and inform this site.</p>
+    </div>
+
+    <!-- PRIMARY SOURCE -->
+    <div class="ref-section">
+      <h3>Primary Textbook</h3>
+      <div class="ref-item">
+        <div class="ref-item-title">[ Textbook Title — e.g., A Friendly Introduction to Number Theory ]</div>
+        <div class="ref-item-meta">Author: Joseph H. Silverman &nbsp;|&nbsp; Publisher: [ Publisher ] &nbsp;|&nbsp; Edition: [ Ed. ]</div>
+        <div class="ref-item-desc">[ Add a brief description of how this textbook was used and why it's recommended. ]</div>
+      </div>
+    </div>
+
+    <!-- ONLINE COURSES -->
+    <div class="ref-section">
+      <h3>Online Courses &amp; Lectures</h3>
+      <div class="ref-item">
+        <div class="ref-item-title">[ Course Title — e.g., Elementary Number Theory, Stanford / Coursera ]</div>
+        <div class="ref-item-meta">Platform: [ Coursera / edX / YouTube ] &nbsp;|&nbsp; Instructor: [ Name ]</div>
+        <div class="ref-item-desc">[ Add a brief description. ]</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-item-title">[ Additional Course / Lecture Series ]</div>
+        <div class="ref-item-meta">Platform: [ Platform ] &nbsp;|&nbsp; Instructor: [ Name ]</div>
+        <div class="ref-item-desc">[ Add a brief description. ]</div>
+      </div>
+    </div>
+
+    <!-- WEBSITES -->
+    <div class="ref-section">
+      <h3>Websites &amp; Online References</h3>
+      <div class="ref-item">
+        <div class="ref-item-title">[ Website Name ]</div>
+        <div class="ref-item-meta">URL: [ https://... ]</div>
+        <div class="ref-item-desc">[ Add a brief description. ]</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-item-title">[ Website Name ]</div>
+        <div class="ref-item-meta">URL: [ https://... ]</div>
+        <div class="ref-item-desc">[ Add a brief description. ]</div>
+      </div>
+    </div>
+
+    <!-- SUPPLEMENTARY BOOKS -->
+    <div class="ref-section">
+      <h3>Further Reading</h3>
+      <div class="ref-item">
+        <div class="ref-item-title">[ Book Title ]</div>
+        <div class="ref-item-meta">Author: [ Name ] &nbsp;|&nbsp; Publisher: [ Publisher ]</div>
+        <div class="ref-item-desc">[ Add a brief description of who this book is for and what it covers. ]</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-item-title">[ Book Title ]</div>
+        <div class="ref-item-meta">Author: [ Name ] &nbsp;|&nbsp; Publisher: [ Publisher ]</div>
+        <div class="ref-item-desc">[ Add a brief description. ]</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-item-title">[ Problem Set / Competition Resource ]</div>
+        <div class="ref-item-meta">Type: Problem Collection &nbsp;|&nbsp; Source: [ Source ]</div>
+        <div class="ref-item-desc">[ Add a brief description. ]</div>
+      </div>
+    </div>
+
+  </div>
+  <footer>
+    <span>The Number Theory Scrapbook</span> — All content authored by the site creator.
+  </footer>
+</section>
+
+<!-- ============================================================ ABOUT -->
+<section class="screen" id="about">
+  <div class="page-wrap">
+    <div class="page-header">
+      <p class="page-eyebrow">The Creator</p>
+      <h1 class="page-title">About <em>This Project</em></h1>
+    </div>
+
+    <div class="about-grid">
+      <!-- Sidebar -->
+      <div class="about-sidebar">
+        <div class="about-card">
+          <div class="about-avatar">𝒩</div>
+          <div class="about-name">[ Your Name ]</div>
+          <p style="font-size:0.9rem;color:var(--sepia-light);margin-top:0.4rem;font-style:italic;">
+            [ Your title / year / school ]
+          </p>
+          <div class="about-email">[ your@email.com ]</div>
+        </div>
+
+        <div style="background:var(--aged);border:1px solid var(--border);border-radius:3px;padding:1.2rem;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sepia);margin-bottom:0.6rem;">Primary Source</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ink);font-style:italic;">[ Silverman's Textbook Title ]</p>
+          <p style="font-size:0.82rem;color:var(--muted);margin-top:0.3rem;">Joseph H. Silverman</p>
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <div class="about-main">
+        <section>
+          <h3>Why I Created This Site</h3>
+          <div class="content-placeholder">[ Your lengthy "Why" paragraph goes here — your passion for math, your background, your goals for this site, what you hope visitors take away, etc. ]</div>
+        </section>
+
+        <section>
+          <h3>My Study of Number Theory</h3>
+          <p>[ Brief description of how you studied the material — the textbook, the process, the timeline. ]</p>
+          <p>[ Add any additional context you want here. ]</p>
+
+          <!-- Notebook pages grid -->
+          <div style="margin-top:1.5rem;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sepia);margin-bottom:0.8rem;">
+              Notebook Documentation
+            </p>
+            <div class="notebook-grid">
+              <div class="notebook-page">
+                [ Upload notebook page image here ]<br>Page 1
+              </div>
+              <div class="notebook-page">
+                [ Upload notebook page image here ]<br>Page 2
+              </div>
+              <div class="notebook-page">
+                [ Upload notebook page image here ]<br>Page 3
+              </div>
+              <div class="notebook-page">
+                [ Upload notebook page image here ]<br>Page 4
+              </div>
+              <div class="notebook-page">
+                [ Upload notebook page image here ]<br>Page 5
+              </div>
+              <div class="notebook-page">
+                [ Upload notebook page image here ]<br>Page 6
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>About Me</h3>
+          <div class="content-placeholder">[ Your personal background, interests, status as a student / person, what drives you, etc. ]</div>
+        </section>
+
+        <section>
+          <h3>What I Hope to Accomplish</h3>
+          <div class="content-placeholder">[ Your goals for this site — making math accessible, inspiring others, demonstrating mastery, etc. ]</div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <span>The Number Theory Scrapbook</span> — All content authored by the site creator.
+  </footer>
+</section>
+
+<!-- ============================================================ JS -->
+<script src="app.js"></script>
+</body>
+</html>
