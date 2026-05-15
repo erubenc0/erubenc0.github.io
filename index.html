@@ -15,13 +15,13 @@
 </head>
 <body>
 
-<!-- Fixed math symbol layer — same 8 symbols on every screen -->
+<!-- Fixed math symbol layer -->
 <div id="math-layer" aria-hidden="true">
   <span>∑</span><span>ζ</span><span>∀</span><span>φ</span>
   <span>∞</span><span>ℕ</span><span>≡</span><span>π</span>
 </div>
 
-<!-- Floating "Show" button for when a quadrant is hidden -->
+<!-- Floating restore button for hidden panels -->
 <button class="show-btn" id="global-show-btn" onclick="restoreHiddenPanel()"></button>
 
 <!-- ══════ NAV ══════ -->
@@ -41,7 +41,6 @@
 <!-- ══════ HOME ══════ -->
 <section class="screen active" id="home">
   <div class="home-wrap">
-
     <h1 class="home-title">Number Theory</h1>
     <div style="margin-bottom:4rem;">
       <button class="btn btn-primary" onclick="showScreen('learn')">Begin Learning →</button>
@@ -49,57 +48,41 @@
 
     <div class="section-rule">Overview</div>
     <div class="overview-rows">
-
       <div class="overview-row">
         <div class="overview-block">
           <h3>What is Number Theory?</h3>
           <div class="ph">[ Your content goes here ]</div>
         </div>
-        <div class="overview-img">[ Image placeholder — replace with &lt;img src="your-file.jpg"&gt; ]</div>
+        <div class="overview-img">[ Image placeholder — replace contents with &lt;img src="your-file.jpg"&gt; ]</div>
       </div>
-
       <div class="overview-row">
         <div class="overview-block">
           <h3>Why Does It Matter?</h3>
           <div class="ph">[ Your content goes here ]</div>
         </div>
-        <div class="overview-img">[ Image placeholder — replace with &lt;img src="your-file.jpg"&gt; ]</div>
+        <div class="overview-img">[ Image placeholder — replace contents with &lt;img src="your-file.jpg"&gt; ]</div>
       </div>
-
       <div class="overview-row">
         <div class="overview-block">
           <h3>A History of the Field</h3>
           <div class="ph">[ Your content goes here ]</div>
         </div>
-        <div class="overview-img">[ Image placeholder — replace with &lt;img src="your-file.jpg"&gt; ]</div>
+        <div class="overview-img">[ Image placeholder — replace contents with &lt;img src="your-file.jpg"&gt; ]</div>
       </div>
-
       <div class="overview-row">
         <div class="overview-block">
           <h3>The Future of Number Theory</h3>
           <div class="ph">[ Your content goes here ]</div>
         </div>
-        <div class="overview-img">[ Image placeholder — replace with &lt;img src="your-file.jpg"&gt; ]</div>
+        <div class="overview-img">[ Image placeholder — replace contents with &lt;img src="your-file.jpg"&gt; ]</div>
       </div>
+    </div>
 
-    </div><!-- /overview-rows -->
-
-    <!-- Founding Fathers — click any card to open their detail page -->
+    <!-- Founding Fathers -->
     <div class="founders-wrap">
       <div class="section-rule">The Founding Fathers</div>
-      <p style="font-family:'Inter',sans-serif;font-size:.72rem;font-weight:300;color:var(--text-muted);margin-bottom:1.5rem;">
-        Click any portrait to learn more.
-      </p>
+      <p style="font-family:'Inter',sans-serif;font-size:.72rem;font-weight:300;color:var(--text-muted);margin-bottom:1.5rem;">Click any portrait to learn more.</p>
       <div class="portraits-grid">
-
-        <!--
-          PORTRAIT IMAGES
-          Wikipedia hotlinks are blocked by browsers.
-          Save each image to your project folder and update the src:
-            gauss.jpg, fermat.jpg, euler.jpg, riemann.jpg
-          The monogram letter shows as a fallback until then.
-        -->
-
         <div class="portrait-card" onclick="openFounder('gauss')">
           <div class="portrait-img-wrap">
             <img src="gauss.jpg" alt="Carl Friedrich Gauss"
@@ -111,7 +94,6 @@
             <div class="portrait-years">1777 – 1855</div>
           </div>
         </div>
-
         <div class="portrait-card" onclick="openFounder('fermat')">
           <div class="portrait-img-wrap">
             <img src="fermat.jpg" alt="Pierre de Fermat"
@@ -123,7 +105,6 @@
             <div class="portrait-years">1601 – 1665</div>
           </div>
         </div>
-
         <div class="portrait-card" onclick="openFounder('euler')">
           <div class="portrait-img-wrap">
             <img src="euler.jpg" alt="Leonhard Euler"
@@ -135,7 +116,6 @@
             <div class="portrait-years">1707 – 1783</div>
           </div>
         </div>
-
         <div class="portrait-card" onclick="openFounder('riemann')">
           <div class="portrait-img-wrap">
             <img src="riemann.jpg" alt="Bernhard Riemann"
@@ -147,10 +127,8 @@
             <div class="portrait-years">1826 – 1866</div>
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
@@ -158,24 +136,14 @@
 <!-- ══════ FOUNDER DETAIL ══════ -->
 <section class="screen" id="founder-detail">
   <div class="page-wrap">
-
     <button class="back-btn" onclick="showScreen('home')" style="margin-bottom:1.5rem;">← Back</button>
-
     <div class="founder-layout">
-
-      <!-- Left: portrait + meta -->
       <div class="founder-portrait-col">
         <div class="founder-portrait-frame">
-          <!--
-            Replace with:
-            <img src="gauss.jpg" alt="Gauss" id="founder-img">
-            The JS will swap the src based on which founder was clicked.
-          -->
           <div class="founder-portrait-placeholder" id="founder-portrait-placeholder">
-            [ Add portrait image here — save file to project folder and replace this div with an &lt;img&gt; tag ]
+            [ Add portrait image — replace this div with &lt;img src="filename.jpg"&gt; ]
           </div>
-          <img id="founder-img" src="" alt=""
-            style="display:none;width:100%;object-fit:cover;object-position:top;"
+          <img id="founder-img" src="" alt="" style="display:none;width:100%;object-fit:cover;object-position:top;"
             onerror="this.style.display='none';document.getElementById('founder-portrait-placeholder').style.display='flex';">
         </div>
         <div class="founder-meta">
@@ -183,274 +151,249 @@
           <div class="founder-meta-years" id="founder-years">[ Years ]</div>
         </div>
       </div>
-
-      <!-- Right: content sections -->
       <div class="founder-sections">
-
         <div class="founder-section">
           <h3>Backstory</h3>
           <div class="ph" id="founder-backstory">[ Your content goes here ]</div>
         </div>
-
         <div class="founder-section">
           <h3>Discoveries</h3>
           <div class="ph" id="founder-discoveries">[ Your content goes here ]</div>
         </div>
-
         <div class="founder-section">
           <h3>Overall Impact</h3>
           <div class="ph" id="founder-impact">[ Your content goes here ]</div>
         </div>
-
         <div class="founder-section">
           <h3>Legacy</h3>
           <div class="ph" id="founder-legacy">[ Your content goes here ]</div>
         </div>
-
       </div>
     </div>
-
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
 
-<!-- ══════ LEARN — SYLLABUS ══════ -->
+<!-- ══════ LEARN — UNIT SELECT ══════ -->
 <section class="screen" id="learn">
   <div class="page-wrap">
     <div class="page-header">
       <p class="page-eyebrow">Curriculum</p>
-      <h1 class="page-title">Begin <em>Learning</em></h1>
-      <p class="page-desc">[ Add a brief intro to the course structure here. ]</p>
+      <h1 class="page-title">Begin Learning</h1>
+      <p class="page-desc">Select a unit below. Each unit walks you through its topics one at a time.</p>
     </div>
 
-    <div class="unit-block">
-      <div class="unit-heading">Unit I — Foundations</div>
-      <div class="topic-grid">
-        <div class="topic-card" onclick="openTopic('divisibility',0)">
-          <div class="topic-num">1.1</div><div class="topic-name">Divisibility &amp; the Division Algorithm</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('gcd',1)">
-          <div class="topic-num">1.2</div><div class="topic-name">Greatest Common Divisor</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('euclidean',2)">
-          <div class="topic-num">1.3</div><div class="topic-name">The Euclidean Algorithm</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('primes',3)">
-          <div class="topic-num">1.4</div><div class="topic-name">Prime Numbers &amp; Unique Factorization</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;">
+
+      <div class="unit-card" onclick="openUnit(0)">
+        <div class="unit-card-number">Unit 1</div>
+        <div class="unit-card-title">The Foundations of Integers</div>
+        <div class="unit-card-topics">Pythagorean Triples · Divisibility · GCD · The Euclidean Algorithm</div>
+        <span class="unit-card-arrow">→</span>
       </div>
-    </div>
 
-    <div class="unit-block">
-      <div class="unit-heading">Unit II — Congruences &amp; Modular Arithmetic</div>
-      <div class="topic-grid">
-        <div class="topic-card" onclick="openTopic('congruences',4)">
-          <div class="topic-num">2.1</div><div class="topic-name">Congruences</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('linear-cong',5)">
-          <div class="topic-num">2.2</div><div class="topic-name">Linear Congruences</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('crt',6)">
-          <div class="topic-num">2.3</div><div class="topic-name">The Chinese Remainder Theorem</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('euler-fermat',7)">
-          <div class="topic-num">2.4</div><div class="topic-name">Euler's &amp; Fermat's Theorems</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
+      <div class="unit-card" onclick="openUnit(1)">
+        <div class="unit-card-number">Unit 2</div>
+        <div class="unit-card-title">Primes and Unique Factorization</div>
+        <div class="unit-card-topics">The Fundamental Theorem of Arithmetic · Distribution of Primes · The Prime Number Theorem</div>
+        <span class="unit-card-arrow">→</span>
       </div>
-    </div>
 
-    <div class="unit-block">
-      <div class="unit-heading">Unit III — Arithmetic Functions</div>
-      <div class="topic-grid">
-        <div class="topic-card" onclick="openTopic('phi',8)">
-          <div class="topic-num">3.1</div><div class="topic-name">Euler's Totient Function φ(n)</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('mobius',9)">
-          <div class="topic-num">3.2</div><div class="topic-name">The Möbius Function &amp; Inversion</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('dirichlet',10)">
-          <div class="topic-num">3.3</div><div class="topic-name">Dirichlet Series &amp; Convolution</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
+      <div class="unit-card" onclick="openUnit(2)">
+        <div class="unit-card-number">Unit 3</div>
+        <div class="unit-card-title">Congruences and Modular Arithmetic</div>
+        <div class="unit-card-topics">Linear Congruences · Fermat's Little Theorem · Carmichael Numbers</div>
+        <span class="unit-card-arrow">→</span>
       </div>
-    </div>
 
-    <div class="unit-block">
-      <div class="unit-heading">Unit IV — Quadratic Residues &amp; Reciprocity</div>
-      <div class="topic-grid">
-        <div class="topic-card" onclick="openTopic('quad-res',11)">
-          <div class="topic-num">4.1</div><div class="topic-name">Quadratic Residues</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('legendre',12)">
-          <div class="topic-num">4.2</div><div class="topic-name">The Legendre Symbol</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('quad-rec',13)">
-          <div class="topic-num">4.3</div><div class="topic-name">The Law of Quadratic Reciprocity</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
+      <div class="unit-card" onclick="openUnit(3)">
+        <div class="unit-card-number">Unit 4</div>
+        <div class="unit-card-title">Euler's Totient and RSA Cryptography</div>
+        <div class="unit-card-topics">Euler's Phi Function $\varphi(n)$ · Euler's Theorem · Public Key Encryption</div>
+        <span class="unit-card-arrow">→</span>
       </div>
-    </div>
 
-    <div class="unit-block">
-      <div class="unit-heading">Unit V — Analytic &amp; Advanced Topics</div>
-      <div class="topic-grid">
-        <div class="topic-card" onclick="openTopic('pnt',14)">
-          <div class="topic-num">5.1</div><div class="topic-name">The Prime Number Theorem</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('riemann-zeta',15)">
-          <div class="topic-num">5.2</div><div class="topic-name">The Riemann Zeta Function</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('diophantine',16)">
-          <div class="topic-num">5.3</div><div class="topic-name">Diophantine Equations</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
-        <div class="topic-card" onclick="openTopic('cryptography',17)">
-          <div class="topic-num">5.4</div><div class="topic-name">Number Theory in Cryptography</div>
-          <div class="topic-teaser">[ One-sentence teaser ]</div><span class="topic-arrow">→</span>
-        </div>
+      <div class="unit-card" onclick="openUnit(4)">
+        <div class="unit-card-number">Unit 5</div>
+        <div class="unit-card-title">Powers, Roots, and Indices</div>
+        <div class="unit-card-topics">Primitive Roots · The Discrete Logarithm Problem</div>
+        <span class="unit-card-arrow">→</span>
       </div>
-    </div>
 
+      <div class="unit-card" onclick="openUnit(5)">
+        <div class="unit-card-number">Unit 6</div>
+        <div class="unit-card-title">Quadratic Reciprocity</div>
+        <div class="unit-card-topics">Quadratic Residues · The Legendre Symbol · The Law of Quadratic Reciprocity</div>
+        <span class="unit-card-arrow">→</span>
+      </div>
+
+      <div class="unit-card" onclick="openUnit(6)">
+        <div class="unit-card-number">Unit 7</div>
+        <div class="unit-card-title">Sums of Squares and Diophantine Equations</div>
+        <div class="unit-card-topics">Gaussian Integers · Sums of Two and Four Squares · Pell's Equation</div>
+        <span class="unit-card-arrow">→</span>
+      </div>
+
+      <div class="unit-card" onclick="openUnit(7)">
+        <div class="unit-card-number">Unit 8</div>
+        <div class="unit-card-title">Advanced Landscapes</div>
+        <div class="unit-card-topics">Continued Fractions · Elliptic Curves · Fermat's Last Theorem (Descent)</div>
+        <span class="unit-card-arrow">→</span>
+      </div>
+
+    </div>
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
 
-<!-- ══════ TOPIC — THEORY + VIZ ══════ -->
-<section class="screen" id="topic-theory">
+<!-- ══════ UNIT TITLE SCREEN ══════ -->
+<section class="screen" id="unit-title">
   <div class="detail-header">
     <div class="detail-inner">
       <button class="back-btn" onclick="showScreen('learn')">← Syllabus</button>
-      <p class="detail-eyebrow" id="tt-unit">Unit</p>
-      <h1 class="detail-title" id="tt-title">Topic Title</h1>
-      <p class="detail-sub" id="tt-discoverer">Discovered / developed by: —</p>
-      <div class="detail-actions">
-        <button class="btn btn-primary" onclick="goToPractice()">Continue Learning →</button>
-      </div>
     </div>
   </div>
-
-  <div class="two-col" id="theory-grid">
-    <div class="quadrant" id="q-theory">
-      <div class="q-label">
-        <span>I — The Theory</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-theory','theory-grid')">Hide</button>
-      </div>
-      <div class="q-title">Formal Mathematics</div>
-      <div id="tt-theory-content">
-        <div class="latex-block">[ LaTeX / KaTeX theory goes here. Use $...$ inline, $$...$$ display. ]</div>
-      </div>
-    </div>
-    <div class="quadrant" id="q-viz">
-      <div class="q-label">
-        <span>II — The Visualization</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-viz','theory-grid')">Hide</button>
-      </div>
-      <div class="q-title">Diagrams &amp; Charts</div>
-      <div id="tt-viz-content">
-        <div class="viz-area">[ Diagram, chart, or interactive visualization goes here ]</div>
-      </div>
-    </div>
+  <div class="unit-title-card" id="unit-title-content">
+    <!-- Populated by JS -->
+  </div>
+  <div class="proceed-row" style="border-top:1px solid var(--border);">
+    <span></span>
+    <button class="btn btn-primary" onclick="startUnit()">Begin Unit →</button>
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
 
-<!-- ══════ TOPIC — PRACTICE ══════ -->
-<section class="screen" id="topic-practice">
+<!-- ══════ TOPIC PANEL: THEORY ══════ -->
+<section class="screen" id="topic-theory">
   <div class="detail-header">
     <div class="detail-inner">
-      <!-- Back arrow to previous screen -->
-      <button class="back-btn" onclick="showScreen('topic-theory')">← Theory &amp; Visualization</button>
-      <p class="detail-eyebrow" id="tp-unit">Unit</p>
-      <h1 class="detail-title" id="tp-title">Topic — Practice</h1>
-      <div class="detail-actions">
-        <button class="btn btn-primary" onclick="goToApplication()">Relevance →</button>
-      </div>
+      <button class="back-btn" id="theory-back-btn" onclick="goTopicBack('theory')">← Back</button>
+      <p class="detail-eyebrow" id="tt-eyebrow">Unit · Topic</p>
+      <h1 class="detail-title" id="tt-title">Topic Title</h1>
+      <p class="detail-sub" id="tt-discoverer">Discovered / developed by: —</p>
     </div>
   </div>
-
-  <div class="two-col" id="practice-grid">
-    <div class="quadrant" id="q-steps">
-      <div class="q-label">
-        <span>Step-by-Step Guide</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-steps','practice-grid')">Hide</button>
-      </div>
-      <div class="q-title">Working Through the Method</div>
-      <div id="tp-steps-content">
-        <div class="step-block"><div class="step-label">Step 1</div><div class="step-content">[ LaTeX step-by-step guide goes here ]</div></div>
-        <div class="step-block"><div class="step-label">Step 2</div><div class="step-content">[ Continue your steps ]</div></div>
-        <div class="step-block"><div class="step-label">Step 3</div><div class="step-content">[ Continue your steps ]</div></div>
-      </div>
+  <div class="full-panel">
+    <div class="panel-section-label">The Theory</div>
+    <div class="panel-title">Formal Mathematics</div>
+    <div id="tt-content">
+      <div class="latex-block">[ LaTeX theory goes here. Use $...$ inline and $$...$$ for display math. ]</div>
     </div>
-    <div class="quadrant" id="q-problems">
-      <div class="q-label">
-        <span>Practice Problems</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-problems','practice-grid')">Hide</button>
-      </div>
-      <div class="q-title">Test Your Understanding</div>
-      <div id="tp-problems-content">
-        <div class="problem-wrap"><div class="problem-q">Problem 1: [ Problem statement ]</div><input class="problem-input" type="text" placeholder="Your answer…"/></div>
-        <div class="problem-wrap"><div class="problem-q">Problem 2: [ Problem statement ]</div><input class="problem-input" type="text" placeholder="Your answer…"/></div>
-        <div class="problem-wrap"><div class="problem-q">Problem 3: [ Problem statement ]</div><input class="problem-input" type="text" placeholder="Your answer…"/></div>
-      </div>
-    </div>
+  </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="goTopicBack('theory')">← Back</button>
+    <button class="btn btn-primary" onclick="proceedFromTheory()">Proceed →</button>
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
 
-<!-- ══════ TOPIC — APPLICATION ══════ -->
+<!-- ══════ TOPIC PANEL: VISUALIZATION ══════ -->
+<section class="screen" id="topic-viz">
+  <div class="detail-header">
+    <div class="detail-inner">
+      <button class="back-btn" onclick="showScreen('topic-theory')">← Theory</button>
+      <p class="detail-eyebrow" id="tv-eyebrow">Unit · Topic</p>
+      <h1 class="detail-title" id="tv-title">Topic Title</h1>
+    </div>
+  </div>
+  <div class="full-panel">
+    <div class="panel-section-label">The Visualization</div>
+    <div class="panel-title">Diagrams and Charts</div>
+    <div id="tv-content">
+      <div class="viz-area" style="min-height:400px;">[ Diagram, chart, or interactive visualization goes here ]</div>
+    </div>
+  </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="showScreen('topic-theory')">← Theory</button>
+    <button class="btn btn-primary" onclick="proceedFromViz()">Proceed →</button>
+  </div>
+  <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
+</section>
+
+<!-- ══════ TOPIC PANEL: PRACTICE STEPS ══════ -->
+<section class="screen" id="topic-steps">
+  <div class="detail-header">
+    <div class="detail-inner">
+      <button class="back-btn" onclick="showScreen('topic-viz')">← Visualization</button>
+      <p class="detail-eyebrow" id="ts-eyebrow">Unit · Topic</p>
+      <h1 class="detail-title" id="ts-title">Topic Title — Practice</h1>
+    </div>
+  </div>
+  <div class="full-panel">
+    <div class="panel-section-label">Step-by-Step Guide</div>
+    <div class="panel-title">Working Through the Method</div>
+    <div id="ts-content">
+      <div class="step-block"><div class="step-label">Step 1</div><div class="step-content">[ LaTeX step-by-step guide goes here ]</div></div>
+      <div class="step-block"><div class="step-label">Step 2</div><div class="step-content">[ Continue your steps ]</div></div>
+      <div class="step-block"><div class="step-label">Step 3</div><div class="step-content">[ Continue your steps ]</div></div>
+    </div>
+  </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="showScreen('topic-viz')">← Visualization</button>
+    <button class="btn btn-primary" onclick="proceedFromSteps()">Proceed →</button>
+  </div>
+  <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
+</section>
+
+<!-- ══════ TOPIC PANEL: PRACTICE PROBLEMS ══════ -->
+<section class="screen" id="topic-problems">
+  <div class="detail-header">
+    <div class="detail-inner">
+      <button class="back-btn" onclick="showScreen('topic-steps')">← Step-by-Step</button>
+      <p class="detail-eyebrow" id="tp-eyebrow">Unit · Topic</p>
+      <h1 class="detail-title" id="tp-title">Topic Title — Problems</h1>
+    </div>
+  </div>
+  <div class="full-panel">
+    <div class="panel-section-label">Practice Problems</div>
+    <div class="panel-title">Test Your Understanding</div>
+    <div id="tp-content">
+      <div class="problem-wrap"><div class="problem-q">Problem 1: [ Problem statement ]</div><input class="problem-input" type="text" placeholder="Your answer…"/></div>
+      <div class="problem-wrap"><div class="problem-q">Problem 2: [ Problem statement ]</div><input class="problem-input" type="text" placeholder="Your answer…"/></div>
+      <div class="problem-wrap"><div class="problem-q">Problem 3: [ Problem statement ]</div><input class="problem-input" type="text" placeholder="Your answer…"/></div>
+    </div>
+  </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="showScreen('topic-steps')">← Step-by-Step</button>
+    <button class="btn btn-primary" onclick="proceedFromProblems()">Proceed →</button>
+  </div>
+  <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
+</section>
+
+<!-- ══════ TOPIC PANEL: APPLICATION ══════ -->
 <section class="screen" id="topic-application">
   <div class="detail-header">
     <div class="detail-inner">
-      <button class="back-btn" onclick="showScreen('topic-practice')">← Practice</button>
-      <p class="detail-eyebrow" id="ta-unit">Unit</p>
-      <h1 class="detail-title" id="ta-title">Topic — Relevance</h1>
-      <div class="detail-actions">
-        <button class="btn btn-outline" onclick="showScreen('learn')">← Back to Syllabus</button>
+      <button class="back-btn" onclick="showScreen('topic-problems')">← Practice</button>
+      <p class="detail-eyebrow" id="ta-eyebrow">Unit · Topic</p>
+      <h1 class="detail-title" id="ta-title">Topic Title — Relevance</h1>
+    </div>
+  </div>
+  <div class="full-panel">
+    <div class="panel-section-label">The Application</div>
+    <div class="panel-title">Real-World Relevance</div>
+    <div id="ta-content">
+      <div class="ph" style="min-height:120px;margin-bottom:1.2rem;">[ Real-world applications go here ]</div>
+      <div class="app-block"><h4>[ Field or Application ]</h4><p>[ Description of how this topic is used ]</p></div>
+      <div class="app-block"><h4>[ Field or Application ]</h4><p>[ Description of how this topic is used ]</p></div>
+      <div style="margin-top:1.2rem;">
+        <span class="app-tag">[ Tag ]</span>
+        <span class="app-tag">[ Tag ]</span>
+        <span class="app-tag">[ Tag ]</span>
       </div>
     </div>
   </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="showScreen('topic-problems')">← Practice</button>
+    <button class="btn btn-primary" id="topic-proceed-btn" onclick="proceedFromApplication()">Proceed →</button>
+  </div>
+  <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
+</section>
 
-  <div class="two-col" id="app-grid">
-    <div class="quadrant" id="q-app-main">
-      <div class="q-label">
-        <span>Real-World Relevance</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-app-main','app-grid')">Hide</button>
-      </div>
-      <div class="q-title">Where This Lives in the World</div>
-      <div id="ta-app-content">
-        <div class="ph" style="min-height:120px;">[ Explain where and how this topic appears in the real world ]</div>
-      </div>
-    </div>
-    <div class="quadrant" id="q-app-examples">
-      <div class="q-label">
-        <span>Fields &amp; Examples</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-app-examples','app-grid')">Hide</button>
-      </div>
-      <div class="q-title">Applied Contexts</div>
-      <div id="ta-examples-content">
-        <div class="app-block"><h4>[ Field or Application ]</h4><p>[ Description of how this topic is used ]</p></div>
-        <div class="app-block"><h4>[ Field or Application ]</h4><p>[ Description of how this topic is used ]</p></div>
-        <div style="margin-top:1rem;">
-          <span class="app-tag">[ Tag ]</span>
-          <span class="app-tag">[ Tag ]</span>
-          <span class="app-tag">[ Tag ]</span>
-        </div>
-      </div>
-    </div>
+<!-- ══════ UNIT COMPLETE ══════ -->
+<section class="screen" id="unit-complete">
+  <div class="unit-complete" id="unit-complete-content">
+    <!-- Populated by JS -->
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
@@ -460,16 +403,17 @@
   <div class="page-wrap" style="padding-bottom:1rem;">
     <div class="page-header">
       <p class="page-eyebrow">Reference</p>
-      <h1 class="page-title">Glossary of <em>Terms</em></h1>
+      <h1 class="page-title">Glossary of Terms</h1>
       <p class="page-desc">[ Brief intro sentence about this glossary. ]</p>
     </div>
+    <!-- All tab moved to end -->
     <div class="cat-tabs">
-      <button class="cat-tab active" onclick="setGlossaryCat('all',this)">All</button>
-      <button class="cat-tab" onclick="setGlossaryCat('foundations',this)">Foundations</button>
+      <button class="cat-tab active" onclick="setGlossaryCat('foundations',this)">Foundations</button>
       <button class="cat-tab" onclick="setGlossaryCat('congruences',this)">Congruences</button>
       <button class="cat-tab" onclick="setGlossaryCat('functions',this)">Arith. Functions</button>
       <button class="cat-tab" onclick="setGlossaryCat('primes',this)">Primes</button>
       <button class="cat-tab" onclick="setGlossaryCat('advanced',this)">Advanced</button>
+      <button class="cat-tab" onclick="setGlossaryCat('all',this)">All</button>
     </div>
   </div>
   <div class="flashcard-scene">
@@ -503,11 +447,10 @@
   <div class="page-wrap">
     <div class="page-header">
       <p class="page-eyebrow">The Unsolved</p>
-      <h1 class="page-title">Unsolved Mysteries <em>Gallery</em></h1>
+      <h1 class="page-title">Unsolved Mysteries Gallery</h1>
       <p class="page-desc">[ Brief intro — what does it mean for a problem to remain open for centuries? ]</p>
     </div>
     <div class="mystery-grid">
-
       <div class="mystery-frame" onclick="openMystery(0)">
         <div class="m-plaque"><span>Exhibit 01</span><span class="m-status">UNSOLVED</span></div>
         <div class="m-canvas"><div class="m-formula-bg">[ formula ]</div><span class="m-symbol">?</span></div>
@@ -517,7 +460,6 @@
           <div class="m-desc">[ Brief description ]</div>
         </div>
       </div>
-
       <div class="mystery-frame" onclick="openMystery(1)">
         <div class="m-plaque"><span>Exhibit 02</span><span class="m-status">UNSOLVED</span></div>
         <div class="m-canvas"><div class="m-formula-bg">[ formula ]</div><span class="m-symbol">∞</span></div>
@@ -527,7 +469,6 @@
           <div class="m-desc">[ Brief description ]</div>
         </div>
       </div>
-
       <div class="mystery-frame" onclick="openMystery(2)">
         <div class="m-plaque"><span>Exhibit 03</span><span class="m-status">UNSOLVED</span></div>
         <div class="m-canvas"><div class="m-formula-bg">[ formula ]</div><span class="m-symbol">ζ</span></div>
@@ -537,113 +478,131 @@
           <div class="m-desc">[ Brief description ]</div>
         </div>
       </div>
-
     </div>
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
 
-<!-- ══════ MYSTERY — CONJECTURE + VIZ ══════ -->
-<section class="screen" id="mystery-theory">
+<!-- ══════ MYSTERY PANEL: CONJECTURE ══════ -->
+<section class="screen" id="mystery-conjecture">
   <div class="detail-header">
     <div class="detail-inner">
       <button class="back-btn" onclick="showScreen('mysteries')">← Gallery</button>
-      <p class="detail-eyebrow" id="mt-eyebrow">Unsolved Mystery</p>
-      <h1 class="detail-title" id="mt-title">Conjecture Title</h1>
-      <p class="detail-sub" id="mt-proposer">Proposed by: —</p>
-      <div class="detail-actions">
-        <button class="btn btn-primary" onclick="showScreen('mystery-results')">Continue Learning →</button>
-      </div>
+      <p class="detail-eyebrow" id="mc-eyebrow">Unsolved Mystery</p>
+      <h1 class="detail-title" id="mc-title">Conjecture Title</h1>
+      <p class="detail-sub" id="mc-proposer">Proposed by: —</p>
     </div>
   </div>
-
-  <div class="two-col" id="mystery-theory-grid">
-    <div class="quadrant" id="q-mt-conjecture">
-      <div class="q-label">
-        <span>I — The Conjecture</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-mt-conjecture','mystery-theory-grid')">Hide</button>
-      </div>
-      <div class="q-title">Formal Statement</div>
-      <div id="mt-conjecture-content">
-        <div class="latex-block">[ Formal LaTeX statement of the conjecture ]</div>
-      </div>
+  <div class="full-panel">
+    <div class="panel-section-label">The Conjecture</div>
+    <div class="panel-title">Formal Statement</div>
+    <div id="mc-content">
+      <div class="latex-block">[ Formal LaTeX statement of the conjecture ]</div>
     </div>
-    <div class="quadrant" id="q-mt-viz">
-      <div class="q-label">
-        <span>II — The Visualization</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-mt-viz','mystery-theory-grid')">Hide</button>
-      </div>
-      <div class="q-title">Diagrams &amp; Charts</div>
-      <div id="mt-viz-content">
-        <div class="viz-area">[ Diagram or chart goes here ]</div>
-      </div>
-    </div>
+  </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="showScreen('mysteries')">← Gallery</button>
+    <button class="btn btn-primary" onclick="showScreen('mystery-viz')">Proceed →</button>
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
 
-<!-- ══════ MYSTERY — KNOWN RESULTS + WHY IT MATTERS ══════ -->
+<!-- ══════ MYSTERY PANEL: VISUALIZATION ══════ -->
+<section class="screen" id="mystery-viz">
+  <div class="detail-header">
+    <div class="detail-inner">
+      <button class="back-btn" onclick="showScreen('mystery-conjecture')">← Conjecture</button>
+      <p class="detail-eyebrow" id="mv-eyebrow">Unsolved Mystery</p>
+      <h1 class="detail-title" id="mv-title">Conjecture Title</h1>
+    </div>
+  </div>
+  <div class="full-panel">
+    <div class="panel-section-label">The Visualization</div>
+    <div class="panel-title">Diagrams and Charts</div>
+    <div id="mv-content">
+      <div class="viz-area" style="min-height:400px;">[ Diagram or chart goes here ]</div>
+    </div>
+  </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="showScreen('mystery-conjecture')">← Conjecture</button>
+    <button class="btn btn-primary" onclick="showScreen('mystery-results')">Proceed →</button>
+  </div>
+  <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
+</section>
+
+<!-- ══════ MYSTERY PANEL: KNOWN RESULTS ══════ -->
 <section class="screen" id="mystery-results">
   <div class="detail-header">
     <div class="detail-inner">
-      <button class="back-btn" onclick="showScreen('mystery-theory')">← Conjecture &amp; Visualization</button>
+      <button class="back-btn" onclick="showScreen('mystery-viz')">← Visualization</button>
       <p class="detail-eyebrow" id="mr-eyebrow">Unsolved Mystery</p>
       <h1 class="detail-title" id="mr-title">Conjecture Title</h1>
-      <div class="detail-actions">
-        <button class="btn btn-outline" onclick="showScreen('mysteries')">← Back to Gallery</button>
-      </div>
     </div>
   </div>
-
-  <div class="two-col" id="mystery-results-grid">
-    <div class="quadrant" id="q-mr-known">
-      <div class="q-label">
-        <span>III — Known Results</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-mr-known','mystery-results-grid')">Hide</button>
-      </div>
-      <div class="q-title">What We Know So Far</div>
-      <div id="mr-known-content">
-        <div class="step-block"><div class="step-label">Result 1</div><div class="step-content">[ Partial result or related theorem ]</div></div>
-        <div class="step-block"><div class="step-label">Result 2</div><div class="step-content">[ Partial result or related theorem ]</div></div>
-      </div>
+  <div class="full-panel">
+    <div class="panel-section-label">Known Results</div>
+    <div class="panel-title">What We Know So Far</div>
+    <div id="mr-content">
+      <div class="step-block"><div class="step-label">Result 1</div><div class="step-content">[ Partial result or related theorem ]</div></div>
+      <div class="step-block"><div class="step-label">Result 2</div><div class="step-content">[ Partial result or related theorem ]</div></div>
     </div>
-    <div class="quadrant" id="q-mr-matters">
-      <div class="q-label">
-        <span>IV — Why It Matters</span>
-        <button class="hide-btn" onclick="toggleQuadrant('q-mr-matters','mystery-results-grid')">Hide</button>
-      </div>
-      <div class="q-title">Significance &amp; Impact</div>
-      <div id="mr-significance-content">
-        <div class="ph" style="min-height:80px;">[ Why solving this would matter ]</div>
-        <div style="margin-top:1rem;">
-          <span class="app-tag">[ Tag ]</span>
-          <span class="app-tag">[ Tag ]</span>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="showScreen('mystery-viz')">← Visualization</button>
+    <button class="btn btn-primary" onclick="showScreen('mystery-matters')">Proceed →</button>
   </div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
 
-<!-- ══════ MORE ══════ -->
+<!-- ══════ MYSTERY PANEL: WHY IT MATTERS ══════ -->
+<section class="screen" id="mystery-matters">
+  <div class="detail-header">
+    <div class="detail-inner">
+      <button class="back-btn" onclick="showScreen('mystery-results')">← Known Results</button>
+      <p class="detail-eyebrow" id="mm-eyebrow">Unsolved Mystery</p>
+      <h1 class="detail-title" id="mm-title">Conjecture Title</h1>
+    </div>
+  </div>
+  <div class="full-panel">
+    <div class="panel-section-label">Why It Matters</div>
+    <div class="panel-title">Significance and Impact</div>
+    <div id="mm-content">
+      <div class="ph" style="min-height:120px;margin-bottom:1.2rem;">[ Why solving this would matter to mathematics and beyond ]</div>
+      <div style="margin-top:1rem;"><span class="app-tag">[ Tag ]</span><span class="app-tag">[ Tag ]</span></div>
+    </div>
+  </div>
+  <div class="proceed-row">
+    <button class="back-btn" onclick="showScreen('mystery-results')">← Known Results</button>
+    <button class="btn btn-outline" onclick="showScreen('mysteries')">← Back to Gallery</button>
+  </div>
+  <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
+</section>
+
+<!-- ══════ MORE — RESEARCH PAPER ══════ -->
 <section class="screen" id="more">
   <div class="page-wrap">
     <div class="page-header">
       <p class="page-eyebrow">Research</p>
-      <h1 class="page-title">The Research <em>Paper</em></h1>
-      <p class="page-desc">[ Brief description of the paper. ]</p>
+      <h1 class="page-title">The Research Paper</h1>
     </div>
+
+    <!-- Paper overview section -->
+    <div class="paper-overview">
+      <h3>About This Paper</h3>
+      <div class="ph">[ Add a brief overview of your research paper here — its purpose, what it covers, your methodology, and key findings. ]</div>
+    </div>
+
     <!--
       PDF VIEWER
-      1. Add paper.pdf to the project folder.
-      2. Delete the .pdf-ph block.
-      3. Uncomment the iframe block below.
+      1. Place paper.pdf in the project folder.
+      2. Delete the .pdf-ph block below.
+      3. Uncomment the iframe block.
     -->
     <div class="pdf-viewer-area">
       <div class="pdf-ph">
         <div class="icon">📄</div>
         <p>Your research paper will appear here.</p>
-        <small>Add paper.pdf to the project folder, then uncomment the iframe in index.html</small>
+        <small>Place paper.pdf in the project folder, then uncomment the iframe in index.html</small>
       </div>
     </div>
     <!--
@@ -651,6 +610,7 @@
       <iframe src="paper.pdf" title="Research Paper"></iframe>
     </div>
     -->
+
     <div style="display:flex;justify-content:center;margin-top:1.5rem;">
       <a href="paper.pdf" target="_blank" class="btn btn-outline">Open in New Tab ↗</a>
     </div>
@@ -663,7 +623,7 @@
   <div class="page-wrap">
     <div class="page-header">
       <p class="page-eyebrow">Bibliography</p>
-      <h1 class="page-title">References &amp; <em>Resources</em></h1>
+      <h1 class="page-title">References and Resources</h1>
       <p class="page-desc">[ Brief intro sentence. ]</p>
     </div>
     <div class="ref-section">
@@ -675,7 +635,7 @@
       </div>
     </div>
     <div class="ref-section">
-      <h3>Online Courses &amp; Lectures</h3>
+      <h3>Online Courses and Lectures</h3>
       <div class="ref-item">
         <div class="ref-title">[ Course Title ]</div>
         <div class="ref-meta">Platform: [ Platform ] &nbsp;|&nbsp; Instructor: [ Name ]</div>
@@ -688,7 +648,7 @@
       </div>
     </div>
     <div class="ref-section">
-      <h3>Websites &amp; Online References</h3>
+      <h3>Websites and Online References</h3>
       <div class="ref-item">
         <div class="ref-title">[ Website Name ]</div>
         <div class="ref-meta">URL: [ https://... ]</div>
@@ -727,7 +687,7 @@
   <div class="page-wrap">
     <div class="page-header">
       <p class="page-eyebrow">The Creator</p>
-      <h1 class="page-title">About <em>This Project</em></h1>
+      <h1 class="page-title">About This Project</h1>
     </div>
     <div class="about-layout">
       <div class="about-sidebar">
@@ -739,18 +699,18 @@
         </div>
         <div class="glass" style="padding:1.2rem;">
           <p style="font-family:'Inter',sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.5rem;">Primary Source</p>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;color:var(--text);">[ Silverman's Textbook Title ]</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:400;color:var(--text);font-style:normal;">[ Silverman's Textbook Title ]</p>
           <p style="font-family:'Inter',sans-serif;font-size:.6rem;font-weight:300;color:var(--text-soft);margin-top:.25rem;">Joseph H. Silverman</p>
         </div>
       </div>
       <div class="about-main">
         <section>
           <h3>Why I Created This Site</h3>
-          <div class="ph" style="min-height:120px;">[ Your "Why" paragraph ]</div>
+          <div class="ph" style="min-height:140px;">[ Your "Why" paragraph ]</div>
         </section>
         <section>
           <h3>My Study of Number Theory</h3>
-          <div class="ph" style="min-height:80px;">[ How you studied the material ]</div>
+          <div class="ph" style="min-height:100px;">[ How you studied the material ]</div>
           <div style="margin-top:1.5rem;">
             <p style="font-family:'Inter',sans-serif;font-size:.6rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.8rem;">Notebook Documentation</p>
             <div class="notebook-grid">
@@ -765,11 +725,11 @@
         </section>
         <section>
           <h3>About Me</h3>
-          <div class="ph" style="min-height:100px;">[ Personal background, interests ]</div>
+          <div class="ph" style="min-height:120px;">[ Personal background, interests ]</div>
         </section>
         <section>
           <h3>What I Hope to Accomplish</h3>
-          <div class="ph" style="min-height:80px;">[ Your goals for this site ]</div>
+          <div class="ph" style="min-height:100px;">[ Your goals for this site ]</div>
         </section>
       </div>
     </div>
