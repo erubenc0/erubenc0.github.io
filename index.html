@@ -34,6 +34,17 @@
     <li><a id="nav-mysteries"  onclick="showScreen('mysteries')">Mysteries</a></li>
     <li><a id="nav-references" onclick="showScreen('references')">References</a></li>
     <li><a id="nav-about"      onclick="showScreen('about')">About</a></li>
+    <!-- Help pop-up -->
+  <button class="help-btn" onclick="toggleHelp()" id="help-btn" aria-label="Site overview">?</button>
+  <div class="help-overlay" id="help-overlay" onclick="toggleHelp()"></div>
+  <div class="help-modal" id="help-modal" role="dialog" aria-modal="true">
+    <button class="help-modal-close" onclick="toggleHelp()">✕</button>
+    <div class="help-modal-eyebrow">Welcome</div>
+    <h2 class="help-modal-title">How to Use This Site</h2>
+    <div class="help-modal-body">
+      [ Replace this placeholder with your site overview — what the visitor should expect, how the sections are organized, any prerequisites, etc. ]
+    </div>
+  </div>
   </ul>
 </nav>
 
@@ -642,15 +653,14 @@
 <section class="screen learning-screen" id="mystery-viz">
   <div class="learn-header"><div class="learn-header-inner"><button class="learn-back-btn" onclick="showScreen('mysteries')">← Gallery</button><div class="learn-eyebrow" id="mv-eyebrow">Unsolved Mystery</div><div class="learn-title" id="mv-title">Visualization</div></div></div>
   <div class="full-panel"><div class="panel-section-label">The Visualization</div><div class="panel-title">Diagrams and Charts</div><div id="mv-content"><div class="viz-area" style="min-height:400px;">[ Diagram or chart ]</div></div></div>
-  <div class="proceed-row"><button class="learn-back-btn" onclick="showScreen('mystery-conjecture')">← Conjecture</button><button class="btn btn-primary" onclick="showScreen('mystery-results')">Strategy →</button></div>
+<div class="proceed-row"><button class="learn-back-btn" onclick="showScreen('mystery-conjecture')">← Conjecture</button><button class="btn btn-primary" onclick="showScreen('mystery-results')">Known Results →</button></div>
   <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
 </section>
 
 <section class="screen learning-screen" id="mystery-results">
   <div class="learn-header"><div class="learn-header-inner"><button class="learn-back-btn" onclick="showScreen('mysteries')">← Gallery</button><div class="learn-eyebrow" id="mr-eyebrow">Unsolved Mystery</div><div class="learn-title" id="mr-title">Known Results</div></div></div>
   <div class="full-panel"><div class="panel-section-label">Known Results</div><div class="panel-title">What We Know So Far</div><div id="mr-content"><div class="step-block"><div class="step-label">Result 1</div><div class="step-content">[ Partial result ]</div></div><div class="step-block"><div class="step-label">Result 2</div><div class="step-content">[ Partial result ]</div></div></div></div>
-  <div class="proceed-row"><button class="learn-back-btn" onclick="showScreen('mystery-viz')">← Visualization</button><button class="btn btn-primary" onclick="showScreen('mystery-matters')">Practice →</button></div>
-  <footer><span>The Number Theory Scrapbook</span> — All content authored by the site creator.</footer>
+ <div class="proceed-row"><button class="learn-back-btn" onclick="showScreen('mystery-viz')">← Visualization</button><button class="btn btn-primary" onclick="showScreen('mystery-matters')">Why It Matters →</button></div>
 </section>
 
 <section class="screen learning-screen" id="mystery-matters">
