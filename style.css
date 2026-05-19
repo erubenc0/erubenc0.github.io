@@ -8,22 +8,23 @@
   --maroon-dark:   #5c0000;
   --maroon-light:  #a82020;
   --maroon-glow:   rgba(128,0,0,0.35);
-  --bg:            #18150f;        /* deep warm near-black */
-  --bg-panel:      #201c14;        /* warm dark panel */
+  --bg:            #18150f;
+  --bg-panel:      #201c14;
   --bg-solid:      #18150f;
-  --card:          #272118;        /* warm dark card */
+  --card:          #272118;
   --card-hover:    #302a1e;
   --border:        rgba(214,208,196,0.12);
   --border-hover:  rgba(214,208,196,0.30);
-  --text:          #f0ebe3;        /* warm off-white */
+  --text:          #f0ebe3;
   --text-soft:     rgba(240,235,227,0.62);
   --text-muted:    rgba(214,208,196,0.42);
   --stone:         #d6d0c4;
-  --gold:          #c9a84c;        /* UChicago accent gold */
+  --gold:          #c9a84c;
   --gold-dim:      rgba(201,168,76,0.18);
   --blur:          blur(0px);
   --nav-h:         62px;
-  --radius:        3px;
+  --radius:        10px;        /* ← was 3px */
+  --radius-sm:     6px;         /* ← new: for tags, badges, small chips */
   --max:           1100px;
   --max-wide:      1240px;
 }
@@ -524,7 +525,7 @@ nav{
   border:1px solid var(--maroon);
   font-family:'Inter',sans-serif;font-size:.58rem;font-weight:400;
   letter-spacing:.1em;text-transform:uppercase;
-  padding:.18rem .6rem;border-radius:3px;margin:.2rem;
+  padding:.18rem .6rem;border-radius:var(--radius-sm);margin:.2rem;
 }
 
 /* ─── MY INTUITION PANEL ─────────────────────────────────────── */
@@ -566,7 +567,7 @@ nav{
 .test-problem-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.6rem;margin-bottom:1rem;}
 .test-problem-num{font-family:'Inter',sans-serif;font-size:.56rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--maroon-light);margin-bottom:.4rem;}
 .test-problem-q{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:.9rem;}
-.test-problem-input{width:100%;padding:.6rem 1rem;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:300;background:var(--bg-panel);border:1px solid var(--border);border-radius:4px;color:var(--text);outline:none;transition:border-color .2s;}
+.test-problem-input{width:100%;padding:.6rem 1rem;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:300;background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);outline:none;transition:border-color .2s;}
 .test-problem-input:focus{border-color:var(--maroon);}
 .test-problem-input::placeholder{color:var(--text-muted);}
 .test-submit-row{
@@ -621,8 +622,8 @@ nav{
   padding:2.5rem 2.5rem 4rem;width:100%;
 }
 .fc-counter{font-family:'Inter',sans-serif;font-size:.62rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;}
-.fc-progress{width:100%;max-width:700px;height:3px;background:rgba(214,208,196,0.12);border-radius:3px;overflow:hidden;margin-bottom:1.5rem;}
-.fc-progress-bar{height:100%;background:var(--maroon);border-radius:3px;transition:width .35s ease;}
+.fc-progress{width:100%;max-width:700px;height:3px;background:rgba(214,208,196,0.12);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:1.5rem;}
+.fc-progress-bar{height:100%;background:var(--maroon);border-radius:var(--radius-sm);transition:width .35s ease;}
 .fc-card-wrap{width:100%;max-width:700px;perspective:1400px;margin-bottom:2rem;}
 .fc-card{width:100%;min-height:400px;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1);cursor:pointer;}
 .fc-card.flipped{transform:rotateY(180deg);}
@@ -687,7 +688,7 @@ nav{
   font-family:'Inter',sans-serif;font-size:.56rem;font-weight:400;
   letter-spacing:.14em;text-transform:uppercase;color:var(--stone);
 }
-.m-status{background:rgba(128,0,0,0.30);border:1px solid var(--maroon);color:var(--stone);padding:.1rem .48rem;border-radius:3px;font-size:.54rem;}
+.m-status{background:rgba(128,0,0,0.30);border:1px solid var(--maroon);color:var(--stone);padding:.1rem .48rem;border-radius:var(--radius-sm);font-size:.54rem;}
 .m-canvas{aspect-ratio:4/3;background:var(--bg-panel);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .m-formula-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--stone);opacity:.06;text-align:center;padding:1rem;pointer-events:none;}
 .m-symbol{font-family:'Cormorant Garamond',serif;font-size:4rem;color:rgba(128,0,0,0.25);}
