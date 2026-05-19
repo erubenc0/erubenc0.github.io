@@ -2,8 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ─────────────────────────────────────────────────────────────
-   DESIGN TOKENS — UChicago palette
-   Maroon #800000, dark grey #1c1917, off-white #f5f0eb, stone #d6d0c4
 ───────────────────────────────────────────────────────────── */
 :root {
   --maroon:        #800000;
@@ -764,3 +762,56 @@ footer span{color:var(--stone);}
 /* ─── KATEX ───────────────────────────────────────────────────── */
 .katex{color:var(--text) !important;}
 .katex-display{overflow-x:auto;padding:.4rem 0;}
+
+/* ─── HELP / OVERVIEW POP-UP ─────────────────────────────────── */
+.help-btn {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-muted); font-family: 'EB Garamond', serif;
+  font-size: .95rem; font-weight: 500; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .18s; flex-shrink: 0; margin-left: .8rem;
+}
+.help-btn:hover { border-color: var(--maroon-light); color: var(--text); background: rgba(128,0,0,0.15); }
+
+.help-overlay {
+  display: none; position: fixed; inset: 0; z-index: 1998;
+  background: rgba(0,0,0,0.55);
+}
+.help-overlay.open { display: block; }
+
+.help-modal {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%);
+  z-index: 1999; width: min(520px, 90vw);
+  background: #1c1710; border: 1px solid var(--border);
+  border-top: 3px solid var(--maroon);
+  border-radius: var(--radius);
+  padding: 2.2rem 2.4rem 2.4rem;
+  box-shadow: 0 24px 64px rgba(0,0,0,.6);
+  opacity: 0; pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+}
+.help-modal.open {
+  opacity: 1; pointer-events: all;
+  transform: translate(-50%, -50%);
+}
+.help-modal-close {
+  position: absolute; top: 1rem; right: 1.1rem;
+  background: none; border: none; color: var(--text-muted);
+  font-size: .85rem; cursor: pointer; line-height: 1;
+  transition: color .15s;
+}
+.help-modal-close:hover { color: var(--text); }
+.help-modal-eyebrow {
+  font-family: 'Inter', sans-serif; font-size: .55rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--maroon-light); margin-bottom: .6rem;
+}
+.help-modal-title {
+  font-family: 'EB Garamond', serif; font-size: 1.8rem; font-weight: 400;
+  color: var(--text); margin-bottom: 1.2rem; line-height: 1.2;
+}
+.help-modal-body {
+  font-family: 'Inter', sans-serif; font-size: .82rem; font-weight: 300;
+  color: var(--text-soft); line-height: 1.85;
+}
