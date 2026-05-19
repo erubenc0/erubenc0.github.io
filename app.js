@@ -867,6 +867,12 @@ function fcMove(dir) {
 /* ─────────────────────────────────────────────────────────────
    INIT
 ───────────────────────────────────────────────────────────── */
+function toggleHelp() {
+  const modal   = document.getElementById('help-modal');
+  const overlay = document.getElementById('help-overlay');
+  const open    = modal.classList.toggle('open');
+  overlay.classList.toggle('open', open);
+}
 document.addEventListener('DOMContentLoaded', () => {
   // Boot the home screen
   showScreen('home');
