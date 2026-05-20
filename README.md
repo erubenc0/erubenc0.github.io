@@ -1,281 +1,343 @@
-# The Number Theory Scrapbook — Editor's Guide
+# The Number Theory Scrapbook
 
-## File Overview
-
-```
-number-theory-scrapbook/
-├── index.html      All screens and HTML structure
-├── style.css       All visual styling
-├── app.js          All JavaScript: navigation, content loading, flashcards, tests, progress
-├── paper.pdf       ADD YOUR OWN — research paper shown in the "More" screen
-├── gauss.jpg       ADD YOUR OWN — portrait of Gauss (used on Home + Founder screen)
-├── fermat.jpg      ADD YOUR OWN — portrait of Fermat
-├── euler.jpg       ADD YOUR OWN — portrait of Euler
-├── riemann.jpg     ADD YOUR OWN — portrait of Riemann
-└── README.md       This file
-```
+A personal, single-page web application for presenting an independent study of elementary number theory. The site combines structured learning units, handwritten notebook documentation, unsolved mystery exhibits, and a curated archive — built entirely in vanilla HTML, CSS, and JavaScript.
 
 ---
 
-## Deploying to GitHub Pages
+## Table of Contents
 
-1. Push this entire folder to a GitHub repository.
-2. Go to **Settings → Pages → Source → Deploy from branch → main / root**.
-3. Your site will be live at `https://yourusername.github.io/repo-name/`.
-
-No build tools required. Plain HTML, CSS, and JavaScript.
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Site Architecture](#site-architecture)
+- [Adding Your Content](#adding-your-content)
+  - [Units and Topics](#units-and-topics)
+  - [Flashcard Glossary](#flashcard-glossary)
+  - [Founders](#founders)
+  - [Proofs](#proofs)
+  - [Unsolved Mysteries](#unsolved-mysteries)
+  - [Archive & Exhibition Hall](#archive--exhibition-hall)
+  - [References](#references)
+  - [About](#about)
+  - [Welcome Modal](#welcome-modal)
+- [Navigation](#navigation)
+- [Mathematics Rendering](#mathematics-rendering)
+- [Local Storage](#local-storage)
+- [Deep Linking into the Archive](#deep-linking-into-the-archive)
+- [Images](#images)
+- [Extending the Site](#extending-the-site)
 
 ---
 
-## How to Edit Content
+## Project Structure
 
-### 1. Home Page — Overview Sections
-Open `index.html`. Find the three `.overview-block` divs. Replace the inner `.ph` div with your text:
-```html
-<!-- Before -->
-<div class="ph">[ Your content goes here ]</div>
-
-<!-- After -->
-<p>Number theory is the study of the integers...</p>
+```
+project/
+├── index.html       # All screens and markup
+├── app.js           # All logic, data, and screen transitions
+├── style.css        # All styling and design tokens
+├── README.md        # This file
+└── [your images]    # Place all image files in this same folder
 ```
 
-To add your images to the right column, replace the `.overview-img` div:
-```html
-<!-- Before -->
-<div class="overview-img">[ Image placeholder ]</div>
+There is no build step. Open `index.html` directly in a browser, or serve the folder with any static file server.
 
-<!-- After -->
-<div class="overview-img"><img src="your-image.jpg" alt="description"></div>
+---
+
+## Getting Started
+
+1. Clone or download the project folder.
+2. Place your image files in the same directory as `index.html`.
+3. Open `index.html` in a browser — no installation required.
+
+To serve locally (optional, avoids certain browser image restrictions):
+
+```bash
+# Python 3
+python3 -m http.server 8080
+
+# Node.js (if npx is available)
+npx serve .
 ```
 
----
-
-### 2. Portrait Images (Founding Fathers)
-Wikipedia hotlinking is blocked by browsers. Download the four portraits locally:
-- Save as `gauss.jpg`, `fermat.jpg`, `euler.jpg`, `riemann.jpg` in the project folder.
-- The `<img src="...">` tags already point to these filenames — no code change needed.
-- The styled monogram letter (G, F, E, R) shows as a fallback until the files are present.
+Then visit `http://localhost:8080`.
 
 ---
 
-### 3. Founder Detail Pages
-In `app.js`, find the `FOUNDERS` object. Fill in each founder's content:
+## Site Architecture
+
+The site is a **single-page application (SPA)**. Only one `<section>` is visible at a time, controlled by the `showScreen(id)` function in `app.js`. Every screen has a corresponding `id` attribute in `index.html`.
+
+### Screen Registry
+
+All valid screen IDs are listed in the `ALL_SCREENS` array at the top of `app.js`. Every new screen you add must be registered there.
+
 ```js
-gauss: {
-  name: 'Carl Friedrich Gauss', years: '1777 – 1855', imgSrc: 'gauss.jpg',
-  backstory:   'Your backstory text here.',
-  discoveries: 'Your discoveries text here.',
-  impact:      'Your impact text here.',
-  legacy:      'Your legacy text here.',
-},
+const ALL_SCREENS = [
+  'home', 'founder-detail',
+  'learn', 'unit-title', 'topic-intro', ...
+];
 ```
 
----
+### Navigating Between Screens
 
-### 4. Unit 0 — History and Philosophy
-Open `index.html`. Find the `<div id="unit0-content">` section inside `#unit0-panel`.
-Replace the inner `.latex-block` div with your text. You can use LaTeX math:
-```html
-<div id="unit0-content">
-  <p style="font-family:'Inter',sans-serif;font-size:.88rem;line-height:1.85;color:rgba(255,255,255,0.62);">
-    Your historical text goes here. Use $a \mid b$ for inline math.
-  </p>
-</div>
-```
-
----
-
-### 5. Unit Cards — Descriptions
-In `app.js`, find the `UNITS` array. Edit the `desc` field for each unit:
 ```js
-{ idx: 0, name: 'Unit 1', title: 'The Foundations of Integers',
-  desc: 'Your description of Unit 1 here.',
-  topics: [ ... ]
+showScreen('screenId');              // navigate to a screen
+showScreen('archive', 'exhibit-id'); // navigate to archive and highlight a specific exhibit
+```
+
+### Nav Highlighting
+
+The `NAV_MAP` object in `app.js` maps each screen ID to the nav link that should be highlighted when that screen is active. If you add a new top-level screen, add an entry here.
+
+---
+
+## Adding Your Content
+
+### Units and Topics
+
+Unit and topic metadata lives in the `UNITS` array in `app.js`. Each unit object has the following shape:
+
+```js
+{
+  idx: 0,               // zero-based index; must match position in array
+  name: 'Unit 1',       // short label shown in cards and headers
+  title: 'Unit 1',      // longer title shown on the unit title screen
+  desc: '...',          // description shown on the unit card in the syllabus
+  topics: [
+    { id: 'topic-1-1', num: '1.1', name: 'Topic 1.1', discoverer: '' },
+    ...
+  ]
 }
 ```
 
+**Topic content** (theory, visualization, intuition, steps, problems, relevance) is populated inside `_loadTopicContent(id)` in `app.js`. Locate that function and find the `switch` or `if` block matching the topic `id`, then set each section's `innerHTML`. Use `$...$` for inline LaTeX and `$$...$$` for display math.
+
 ---
 
-### 6. Topic Content (Theory, Visualization, My Intuition, Strategy, Practice, Relevance)
-In `app.js`, find the `_loadTopicContent()` function. Scroll to the section marked:
-```
-// ADD YOUR CONTENT PER TOPIC HERE
-```
-Add an `if` block for each topic id:
+### Flashcard Glossary
+
+Flashcards are defined in the `FLASHCARDS` array in `app.js`. Each card has this shape:
+
 ```js
-if (topic.id === 'pythagorean') {
-  theory = `<div class="latex-block">
-    A Pythagorean triple $(a,b,c)$ satisfies $$a^2 + b^2 = c^2$$
-    where $a,b,c$ are positive integers.
-  </div>`;
-
-  viz = `<img src="pythagorean-diagram.jpg" style="width:100%;border-radius:6px;">`;
-
-  intuition = `
-    <div class="intuition-block">
-      <div class="intuition-label">My Interpretation</div>
-      <div class="intuition-text">I think of Pythagorean triples as...</div>
-    </div>
-    <div class="intuition-block" style="margin-top:1rem;">
-      <div class="intuition-label">Personal Notes</div>
-      <div class="intuition-note-area">
-        <img src="notes-pythagorean.jpg" style="width:100%;border-radius:4px;">
-      </div>
-    </div>
-  `;
-
-  steps = `
-    <div class="step-block">
-      <div class="step-label">Step 1</div>
-      <div class="step-content">Set $m > n > 0$ with $\gcd(m,n) = 1$ and $m \not\equiv n \pmod{2}$.</div>
-    </div>
-    <div class="step-block">
-      <div class="step-label">Step 2</div>
-      <div class="step-content">Then $a = m^2 - n^2$, $b = 2mn$, $c = m^2 + n^2$ is a primitive triple.</div>
-    </div>
-  `;
-
-  problems = `
-    <div class="problem-wrap">
-      <div class="problem-q">Problem 1: Find all primitive triples with $c < 20$.</div>
-      <input class="problem-input" type="text" placeholder="Your answer…"/>
-      <button class="problem-answer-toggle" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="problem-answer-reveal">$(3,4,5)$, $(5,12,13)$, $(8,15,17)$</div>
-    </div>
-  `;
-
-  app = `
-    <div class="app-block">
-      <h4>Architecture</h4>
-      <p>Used since ancient Egypt to construct right angles in buildings.</p>
-    </div>
-    <span class="app-tag">Architecture</span>
-    <span class="app-tag">Surveying</span>
-  `;
+{
+  unit:      'Unit 1',          // label shown at the top of the front face
+  term:      'Term 1.1',        // bold term on the front face
+  latex:     '$a \\mid b$',     // optional LaTeX formula shown on the back; use '' to omit
+  cat:       'unit-1',          // category string (currently unused for filtering)
+  formal:    '...',             // Formal Definition section on the back
+  intuition: '...',             // Intuitive Translation section on the back
+  example:   '...',             // Sandbox Example section on the back
 }
 ```
-You can use `$...$` for inline math and `$$...$$` for display math anywhere in these strings.
+
+To add a card, append a new object to the array. To reorder cards, reorder the objects. The counter and progress bar update automatically.
 
 ---
 
-### 7. Topic Intro Images
-Each topic intro screen has an image slot. To add your image, find the intro html in `_showTopicIntro()` in `app.js`:
-```js
-document.getElementById('topic-intro-content').innerHTML = `
-  <div class="topic-intro-eyebrow">...</div>
-  <h1 class="topic-intro-heading">...</h1>
-  <div class="topic-intro-img">
-    <img src="topic-pythagorean.jpg" alt="Pythagorean Triples">
-  </div>
-`;
-```
-Replace the placeholder `div` with an `<img>` tag pointing to your file.
+### Founders
+
+The four founder portrait cards on the Home screen call `openFounder(key)` on click. The keys are `'gauss'`, `'fermat'`, `'euler'`, and `'riemann'`. Content for each founder is set inside the `openFounder()` function in `app.js` — locate the matching `case` block and set the `innerHTML` of these elements:
+
+| Element ID               | Content                          |
+|--------------------------|----------------------------------|
+| `founder-name`           | Full name                        |
+| `founder-years`          | Birth and death years            |
+| `founder-backstory`      | Backstory paragraph(s)           |
+| `founder-discoveries`    | Key discoveries                  |
+| `founder-impact`         | Overall impact                   |
+| `founder-legacy`         | Legacy and influence             |
+
+For the portrait image, set `src` on the `#founder-img` element and call `.style.display = 'block'` on it (it is hidden by default until a valid image loads).
 
 ---
 
-### 8. Adding More Topics to a Unit
-In `app.js`, add a new entry to the relevant unit's `topics` array:
-```js
-{ id: 'my-new-topic', num: '1.5', name: 'My New Topic', discoverer: 'Name (Year)' },
-```
-Then add an `if (topic.id === 'my-new-topic') { ... }` block in `_loadTopicContent()`.
+### Proofs
+
+Proof content lives directly in `index.html` inside `#proofs`. There are two tabs — **My Proofs** and **Mistakes and Corrections** — toggled by `showProofTab()`.
+
+**To edit a proof**, locate the relevant `.proof-card` block and update:
+- `.proof-card-title` — theorem name
+- First `.proof-body` — written explanation
+- Second `.proof-body` — full proof writeup (LaTeX renders automatically)
+- `.proof-img-slot` elements — replace each with `<img src="your-file.jpg">`
+
+**To add a proof**, copy an entire `.proof-card` block and paste it before the closing `</div>` of `#proofs-tab-proofs`.
+
+**To edit a mistake**, locate the relevant `.mistake-card` block and update the title, image slots, and explanation text in each `.mistake-two-col` column.
 
 ---
 
-### 9. Unit Test Questions
-In `app.js`, find the `UNIT_TESTS` object. Add your questions for each unit:
-```js
-0: [ // Unit 1 (index 0 in UNITS array)
-  { q: 'Find $\\gcd(48, 18)$ using the Euclidean Algorithm.', answer: '6' },
-  { q: 'State the Division Algorithm.', answer: '' },  // '' = manually graded
-],
-```
-- If `answer` is non-empty, answers are auto-checked (case-insensitive, trimmed).
-- If `answer` is `''`, the question is marked "Manually graded" in Feedback.
+### Unsolved Mysteries
+
+Mystery gallery cards are in `index.html` inside `.mystery-grid`. Each card calls `openMystery(index)` on click.
+
+The detail content for each mystery (conjecture, visualization, known results, relevance) is set inside `openMystery(idx)` in `app.js`. Locate the matching index and set the `innerHTML` of:
+
+| Element ID    | Screen              | Content                        |
+|---------------|---------------------|--------------------------------|
+| `mc-content`  | The Conjecture      | Formal LaTeX statement         |
+| `mv-content`  | Visualization       | Diagram, chart, or interactive |
+| `mr-content`  | Known Results       | Partial results and progress   |
+| `mm-content`  | Relevance           | Why solving it matters         |
+
+The navigation flow through mystery panels is:
+**The Conjecture → Visualization → Known Results → Relevance**
 
 ---
 
-### 10. Flashcard Glossary
-In `app.js`, find the `FLASHCARDS` array. Fill in the `def` field for each card:
-```js
-{ unit:'Unit 1 — Foundations', term:'Divisibility',
-  def: 'We say $a$ divides $b$, written $a \\mid b$, if there exists an integer $k$ such that $b = ak$.',
-  latex: '$a \\mid b$',
-  cat: 'foundations' },
-```
-To add a new card, copy any entry and append it. Set `cat` to one of:
-`foundations` | `congruences` | `functions` | `primes` | `advanced`
+### Archive & Exhibition Hall
 
----
+The archive is organized into **unit groups**. Each group (`data-group="unit-1"`, etc.) contains exactly three exhibit cards displayed side by side.
 
-### 11. Mysteries Gallery
-In `index.html`, edit the three `.mystery-frame` cards (name, year, description).
-In `app.js`, edit the `MYSTERIES` array (title and proposer shown in panel headers).
-To add content to each mystery's 4 panels, find the `// ── Mystery content` section in `openMystery()` and add your `if (idx === 0) { ... }` blocks.
+**To fill in an exhibit card**, locate its `id` in `index.html` (e.g., `id="exhibit-unit-1-p1"`) and update:
 
----
+| Element               | Content                                                   |
+|-----------------------|-----------------------------------------------------------|
+| `.exhibit-img-slot`   | Replace with `<img src="your-scan.jpg">`                  |
+| `.exhibit-caption`    | Short descriptive caption beneath the image               |
+| `.plaque-object-title`| Exhibit title (e.g., "Unit 1, Page 1")                    |
+| `.plaque-note`        | Curatorial note describing the page's mathematical content|
 
-### 12. Proofs Section
-Open `index.html`. Find `#proofs`.
-- **My Proofs tab**: edit the `.proof-card` blocks. Replace `.proof-body` text with your proof writeup. Replace `.proof-img-slot` divs with `<img>` tags.
-- **Mistakes tab**: edit the `.mistake-card` blocks. Replace text in `.intuition-text.ph` with your explanations. Replace `.proof-img-slot` divs with `<img>` tags.
+**Clicking an image** opens a lightbox. This works automatically — no additional code needed once a real `<img>` is in place.
 
-To add another proof or mistake, copy the relevant block and paste it below, then update the content.
+**To link to a specific exhibit from inside a learning unit**, use:
 
----
-
-### 13. Research Paper
-1. Place your PDF in the project folder as `paper.pdf`.
-2. In `index.html`, find the `#more` section. Delete the `.pdf-viewer-area` block that contains `.pdf-ph`.
-3. Uncomment the `<iframe>` block directly below it:
 ```html
-<div class="pdf-viewer-area">
-  <iframe src="paper.pdf" title="Research Paper"></iframe>
-</div>
+<button class="exhibit-eye-btn" onclick="showScreen('archive', 'exhibit-unit-3-p1')">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="12" cy="12" rx="10" ry="6"/>
+    <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+  </svg>
+  View in Archive
+</button>
 ```
 
----
-
-### 14. About Page
-In `index.html`, find `#about`. Fill in:
-- `.about-name` — your name
-- `.about-role` — your title / year / school
-- `.about-email` — your email address
-- The `.ph` placeholder divs in `.about-main`
-- Notebook images: replace each `.notebook-page` div with `<img src="pageN.jpg">`
+This navigates to the archive, filters to the correct unit, scrolls the card into view, and briefly highlights it.
 
 ---
 
-## KaTeX Math Rendering
+### References
 
-Use standard LaTeX delimiters anywhere in HTML or injected content:
-- **Inline:** `$a \equiv b \pmod{n}$`
-- **Display:** `$$\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}$$`
-
-KaTeX re-renders automatically on every screen transition.
-When writing LaTeX inside JavaScript template literals, escape backslashes: `\\frac`, `\\pmod`, `\\mathbb{Z}`.
+All reference content is in `index.html` inside `#references`. Locate the relevant `.ref-item` block and update `.ref-title`, `.ref-meta`, and `.ref-desc` directly in the HTML. To add a reference, copy a `.ref-item` block and paste it within the appropriate `.ref-section`.
 
 ---
 
-## Progress and Test Data
+### About
 
-Progress and test scores are saved to the browser's `localStorage` under two keys:
-- `nts_progress` — `{ unitIndex: topicIndex }` — last topic reached per unit
-- `nts_tests` — `{ unitIndex: { score, total, answers } }` — test results
+About section content is in `index.html` inside `#about`. Update the following elements directly in the HTML:
 
-This data persists between sessions in the same browser. It is **not** shared across devices.
-To reset all progress and scores, run this in the browser console:
+| Element          | Content                    |
+|------------------|----------------------------|
+| `.about-avatar`  | Single initial or monogram |
+| `.about-name`    | Your full name             |
+| `.about-role`    | Title, year, institution   |
+| `.about-email`   | Contact email              |
+| `.about-main .ph`| The four text sections     |
+
+---
+
+### Welcome Modal
+
+The welcome modal (`#help-modal`) appears **automatically on the very first visit** and never again automatically. It re-opens any time the user clicks the `?` button in the navbar.
+
+This is controlled by the `nts_welcome_seen` key in `localStorage`. To reset it during development (force the modal to show again), run in the browser console:
+
+```js
+localStorage.removeItem('nts_welcome_seen');
+```
+
+To edit the modal content, locate `id="help-modal"` in `index.html` and update the `.help-modal-body` div. You can place text, `<img>` tags, and any standard HTML inside it.
+
+---
+
+## Navigation
+
+The navbar links are centered using `position:absolute; left:50%; transform:translateX(-50%)` on the `.nav-links-center` class. The brand (left) and icon group (right) remain in place via `flex-shrink:0`.
+
+The two icon buttons in the top-right corner are:
+- **Paper icon** — opens the Archive & Exhibition Hall (`showScreen('archive')`)
+- **? icon** — opens/closes the welcome modal (`toggleHelp()`)
+
+---
+
+## Mathematics Rendering
+
+LaTeX is rendered by [KaTeX](https://katex.org/) loaded from CDN. It runs automatically on page load and re-runs each time a new screen becomes active.
+
+- Inline math: `$...$` or `\(...\)`
+- Display math: `$$...$$` or `\[...\]`
+
+Use these delimiters anywhere in content strings set via `innerHTML`, directly in `index.html`, or inside flashcard fields in `app.js`.
+
+---
+
+## Local Storage
+
+The site uses `localStorage` for two purposes:
+
+| Key               | Type    | Purpose                                              |
+|-------------------|---------|------------------------------------------------------|
+| `nts_progress`    | JSON    | Tracks which topic the user last reached per unit    |
+| `nts_welcome_seen`| String  | Records that the welcome modal has been shown once   |
+
+All storage calls are wrapped in `try/catch` so the site degrades gracefully if `localStorage` is unavailable (e.g., in certain private browsing modes).
+
+To clear all site data in the browser console:
+
 ```js
 localStorage.removeItem('nts_progress');
-localStorage.removeItem('nts_tests');
-location.reload();
+localStorage.removeItem('nts_welcome_seen');
 ```
 
 ---
 
-## Adding a New Screen
+## Deep Linking into the Archive
 
-1. Add a `<section class="screen" id="my-screen">` block in `index.html`.
-2. Add `'my-screen'` to the `ALL_SCREENS` array in `app.js`.
-3. Add `'my-screen': 'nav-link-id'` to `NAV_MAP` in `app.js`.
-4. Call `showScreen('my-screen')` from any button or link.
+`showScreen()` accepts an optional second argument for the archive:
+
+```js
+showScreen('archive', 'exhibit-unit-3-p1');
+```
+
+When called with a target ID, the function:
+1. Navigates to the archive screen
+2. Fires the correct unit filter button
+3. Scrolls the target exhibit card into view
+4. Applies a brief highlight pulse animation to the card
+
+The target must be a valid `id` attribute on an `.exhibit-case` element in `index.html`.
+
+---
+
+## Images
+
+All images should be placed in the same directory as `index.html`. Reference them by filename only (no path prefix needed):
+
+```html
+<img src="notebook-u1-p1.jpg" alt="Unit 1, Page 1">
+```
+
+Recommended image types and sizes:
+
+| Location              | Recommended aspect ratio | Notes                            |
+|-----------------------|--------------------------|----------------------------------|
+| Archive exhibit scans | 3:4 (portrait)           | Matches the `.exhibit-frame` CSS |
+| Proof images          | 3:2 (landscape)          | Matches `.proof-img-slot`        |
+| Topic intro images    | 4:3                      | Matches `.topic-intro-img`       |
+| Founder portraits     | 1:1 or 4:5               | Cropped to top in CSS            |
+| Home overview images  | 16:7 (wide)              | Matches `.overview-img`          |
+
+All `<img>` elements in topic intros should include `style="width:100%;border-radius:var(--radius);"` for consistent styling.
+
+---
+
+## Extending the Site
+
+**To add a new unit**, append a new object to the `UNITS` array in `app.js`, following the existing shape. Progress tracking and syllabus card rendering are automatic.
+
+**To add a new mystery**, add a new `.mystery-frame` card to `.mystery-grid` in `index.html` and add a corresponding `case` block inside `openMystery()` in `app.js`.
+
+**To add a new top-level screen**, add a `<section class="screen" id="your-id">` in `index.html`, register the ID in `ALL_SCREENS` in `app.js`, and optionally add an entry to `NAV_MAP` if it should highlight a nav link.
+
+**To add a nav link**, add a `<li><a id="nav-your-id" onclick="showScreen('your-id')">Label</a></li>` to the `<ul class="nav-links nav-links-center">` in `index.html`.
