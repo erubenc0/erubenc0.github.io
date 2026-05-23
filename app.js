@@ -137,7 +137,6 @@ function _openIntuitionLightbox(idx) {
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-───────────────────────────────────────────────────────────── */
 function showLearnView(view) {
   const isSyllabus = view === 'syllabus';
   document.getElementById('learn-view-syllabus').style.display  = isSyllabus ? '' : 'none';
