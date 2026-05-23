@@ -2,8 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ─────────────────────────────────────────────────────────────
-   DESIGN TOKENS — UChicago palette
-   Maroon #800000, dark grey #1c1917, off-white #f5f0eb, stone #d6d0c4
 ───────────────────────────────────────────────────────────── */
 :root {
   --maroon:        #800000;
@@ -21,7 +19,7 @@
   --text-soft:     rgba(240,235,227,0.62);
   --text-muted:    rgba(214,208,196,0.42);
   --stone:         #d6d0c4;
-  --gold:          #c9a84c;        /* UChicago accent gold */
+  --gold:          #c9a84c;        
   --gold-dim:      rgba(201,168,76,0.18);
   --blur:          blur(0px);
   --nav-h:         62px;
