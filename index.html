@@ -12,6 +12,21 @@
       {left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}
     ],throwOnError:false})"></script>
   <link rel="stylesheet" href="style.css"/>
+  <script type="module">
+  import { initializeApp }  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth }        from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore }   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  const app = initializeApp({
+    apiKey:            "AIzaSyCWzd5VYmiUehwCHlB_2yUU0xte9VMPEXU",
+    authDomain:        "number-theory-scrapbook.firebaseapp.com",
+    projectId:         "number-theory-scrapbook",
+    storageBucket:     "number-theory-scrapbook.firebasestorage.app",
+    messagingSenderId: "1063124692508",
+    appId:             "1:1063124692508:web:c9f553e75b60c0ce1c39d9"
+  });
+  window._firebaseAuth = getAuth(app);
+  window._firebaseDb   = getFirestore(app);
+</script>
 </head>
 <body>
 
