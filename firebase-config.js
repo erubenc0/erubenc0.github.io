@@ -10,10 +10,11 @@
 */
 
 window._fbConfig = {
-  apiKey:            "YOUR_API_KEY",
-  authDomain:        "YOUR_PROJECT.firebaseapp.com",
-  projectId:         "YOUR_PROJECT_ID",
-  storageBucket:     "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId:             "YOUR_APP_ID"
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  apiKey: "AIzaSyCWzd5VYmiUehwCHlB_2yUU0xte9VMPEXU",
+  authDomain: "number-theory-scrapbook.firebaseapp.com",
+  projectId: "number-theory-scrapbook",
+  storageBucket: "number-theory-scrapbook.firebasestorage.app",
+  messagingSenderId: "1063124692508",
+  appId: "1:1063124692508:web:c9f553e75b60c0ce1c39d9",
 };
