@@ -250,7 +250,7 @@ function showLearnView(view) {
 
 // ── Hardcode your Firebase UID here to grant creator status ────
 // Find your UID in Firebase console → Authentication → Users
-const CREATOR_UID = 'REPLACE_WITH_YOUR_FIREBASE_UID';
+const CREATOR_UID = 'qCIjKE5moCftGuY8JzRPq5DAUE12';
 
 // ── Milestone tiers ────────────────────────────────────────────
 const MILESTONES = [
