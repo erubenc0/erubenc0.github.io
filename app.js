@@ -220,7 +220,7 @@ function showProofTab(tab, btn) {
 ───────────────────────────────────────────────────────────── */
 const UNITS = [
   {
-    idx: 0, name: 'Unit 1', title: 'Unit 1',
+    idx: 0, name: 'Unit 1', title: 'Foundations of Integers',
     desc: 'Unit 1 description goes here. To implement, locate the <code>desc</code> field for Unit 1 in the <code>UNITS</code> array in <code>app.js</code>.',
     topics: [
       { id: 'topic-1-1', num: '1.1', name: 'Topic 1.1', discoverer: '' },
@@ -231,7 +231,7 @@ const UNITS = [
     ]
   },
   {
-    idx: 1, name: 'Unit 2', title: 'Unit 2',
+    idx: 1, name: 'Unit 2', title: 'Primes & Unique Factorization',
     desc: 'Unit 2 description goes here. To implement, locate the <code>desc</code> field for Unit 2 in the <code>UNITS</code> array in <code>app.js</code>.',
     topics: [
       { id: 'topic-2-1', num: '2.1', name: 'Topic 2.1', discoverer: '' },
@@ -241,7 +241,7 @@ const UNITS = [
     ]
   },
   {
-    idx: 2, name: 'Unit 3', title: 'Unit 3',
+    idx: 2, name: 'Unit 3', title: 'Congruences & Modular Arithmetic',
     desc: 'Unit 3 description goes here. To implement, locate the <code>desc</code> field for Unit 3 in the <code>UNITS</code> array in <code>app.js</code>.',
     topics: [
       { id: 'topic-3-1', num: '3.1', name: 'Topic 3.1', discoverer: '' },
@@ -251,7 +251,7 @@ const UNITS = [
     ]
   },
   {
-    idx: 3, name: 'Unit 4', title: 'Unit 4',
+    idx: 3, name: 'Unit 4', title: 'Euler’s Totient Function & Cryptography',
     desc: 'Unit 4 description goes here. To implement, locate the <code>desc</code> field for Unit 4 in the <code>UNITS</code> array in <code>app.js</code>.',
     topics: [
       { id: 'topic-4-1', num: '4.1', name: 'Topic 4.1', discoverer: '' },
@@ -261,7 +261,7 @@ const UNITS = [
     ]
   },
   {
-    idx: 4, name: 'Unit 5', title: 'Unit 5',
+    idx: 4, name: 'Unit 5', title: 'Powers, Roots, & Indices',
     desc: 'Unit 5 description goes here. To implement, locate the <code>desc</code> field for Unit 5 in the <code>UNITS</code> array in <code>app.js</code>.',
     topics: [
       { id: 'topic-5-1', num: '5.1', name: 'Topic 5.1', discoverer: '' },
@@ -271,7 +271,7 @@ const UNITS = [
     ]
   },
   {
-    idx: 5, name: 'Unit 6', title: 'Unit 6',
+    idx: 5, name: 'Unit 6', title: 'Quadratic Reciprocity',
     desc: 'Unit 6 description goes here. To implement, locate the <code>desc</code> field for Unit 6 in the <code>UNITS</code> array in <code>app.js</code>.',
     topics: [
       { id: 'topic-6-1', num: '6.1', name: 'Topic 6.1', discoverer: '' },
@@ -281,7 +281,7 @@ const UNITS = [
     ]
   },
   {
-    idx: 6, name: 'Unit 7', title: 'Unit 7',
+    idx: 6, name: 'Unit 7', title: 'Sums of Squares & Diophantine',
     desc: 'Unit 7 description goes here. To implement, locate the <code>desc</code> field for Unit 7 in the <code>UNITS</code> array in <code>app.js</code>.',
     topics: [
       { id: 'topic-7-1', num: '7.1', name: 'Topic 7.1', discoverer: '' },
@@ -291,7 +291,7 @@ const UNITS = [
     ]
   },
   {
-    idx: 7, name: 'Unit 8', title: 'Unit 8',
+    idx: 7, name: 'Unit 8', title: 'Advanced Landscapes',
     desc: 'Unit 8 description goes here. To implement, locate the <code>desc</code> field for Unit 8 in the <code>UNITS</code> array in <code>app.js</code>.',
     topics: [
       { id: 'topic-8-1', num: '8.1', name: 'Topic 8.1', discoverer: '' },
