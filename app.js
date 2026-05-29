@@ -597,8 +597,6 @@ function _loadTopicContent(unitIdx, topicIdx) {
   //   vizDiagram = `<img src="topic-1-1-diagram.jpg" style="width:100%;border-radius:var(--radius);">`;
   //   vizDesc    = `Description of the visualization.`;
   //   intuitionText = `Your personal interpretation.`;
-  //   clickedFirst  = `What first made this click.`;
-  //   confusedBy    = `What initially confused you.`;
   //   intuitionImages = [
   //     { src: 'notes-1-1-a.jpg', alt: 'Page 1 of notes' },
   //     { src: 'notes-1-1-b.jpg', alt: 'Page 2 of notes' },
@@ -724,9 +722,9 @@ function _showUnitComplete() {
   Replace the placeholder innerHTML strings for each mystery index.
 */
 const MYSTERIES = [
-  { eyebrow: 'Exhibit 01 — Unsolved Mystery', title: '[ Conjecture Name ]', proposer: 'Proposed by: [ Name, Year ]' },
-  { eyebrow: 'Exhibit 02 — Unsolved Mystery', title: '[ Conjecture Name ]', proposer: 'Proposed by: [ Name, Year ]' },
-  { eyebrow: 'Exhibit 03 — Unsolved Mystery', title: '[ Conjecture Name ]', proposer: 'Proposed by: [ Name, Year ]' },
+  { eyebrow: 'Exhibit 01 — The Collatz Conjecture', title: '[ The Collatz Conjecture ]', proposer: 'Proposed by: [ Name, Year ]' },
+  { eyebrow: 'Exhibit 02 — The Twin Prime Conjecture', title: '[ The Twin Prime Conjecture ]', proposer: 'Proposed by: [ Name, Year ]' },
+  { eyebrow: 'Exhibit 03 — Odd Perfect Numbers', title: '[ Odd Perfect Numbers ]', proposer: 'Proposed by: [ Name, Year ]' },
 ];
 
 let currentMysteryIdx = 0;
