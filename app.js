@@ -722,9 +722,9 @@ function _showUnitComplete() {
   Replace the placeholder innerHTML strings for each mystery index.
 */
 const MYSTERIES = [
-  { eyebrow: 'Exhibit 01 — The Collatz Conjecture', title: '[ The Collatz Conjecture ]', proposer: 'Proposed by: [ Name, Year ]' },
-  { eyebrow: 'Exhibit 02 — The Twin Prime Conjecture', title: '[ The Twin Prime Conjecture ]', proposer: 'Proposed by: [ Name, Year ]' },
-  { eyebrow: 'Exhibit 03 — Odd Perfect Numbers', title: '[ Odd Perfect Numbers ]', proposer: 'Proposed by: [ Name, Year ]' },
+  { eyebrow: 'Exhibit 01 — The Collatz Conjecture', title: 'The Collatz Conjecture', proposer: 'Proposed by: [ Name, Year ]' },
+  { eyebrow: 'Exhibit 02 — The Twin Prime Conjecture', title: 'The Twin Prime Conjecture', proposer: 'Proposed by: [ Name, Year ]' },
+  { eyebrow: 'Exhibit 03 — Odd Perfect Numbers', title: 'Odd Perfect Numbers', proposer: 'Proposed by: [ Name, Year ]' },
 ];
 
 let currentMysteryIdx = 0;
